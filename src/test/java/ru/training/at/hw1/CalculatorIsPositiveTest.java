@@ -11,12 +11,12 @@ public class CalculatorIsPositiveTest {
 
     @DataProvider()
     public static Object[][] parseLongNumbers() {
-        return new Object[][]{
-                {5, true},
-                {4, true},
-                {-7, false},
-                {-3, false},
-                {0, false}
+        return new Object[][] {
+            {5, true},
+            {4, true},
+            {-7, false},
+            {-3, false},
+            {0, false}
         };
     }
 

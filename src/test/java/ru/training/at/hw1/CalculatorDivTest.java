@@ -11,60 +11,64 @@ public class CalculatorDivTest {
 
     @DataProvider()
     public static Object[][] parseIntNumbers() {
-        return new Object[][]{
-                {2, 2, 1},
-                {6, 2, 3},
-                {0, 5, 0},
-                {-21, -7, 3}
+        return new Object[][] {
+            {2, 2, 1},
+            {6, 2, 3},
+            {0, 5, 0},
+            {-21, -7, 3}
         };
     }
 
     @DataProvider()
     public static Object[][] parseDoubleNumbers() {
-        return new Object[][]{
-                {2.5, 2.5, 1.0},
-                {3.1, 2.2, 1.4},
-                {7.8, -5.2, -1.5},
-                {-3.4, -1.1, 3.09}
+        return new Object[][] {
+            {2.5, 2.5, 1.0},
+            {3.1, 2.2, 1.4},
+            {7.8, -5.2, -1.5},
+            {-3.4, -1.1, 3.09}
         };
     }
 
     @DataProvider()
     public static Object[][] parseDivByZeroIntNumbers() {
-        return new Object[][]{
-                {2, 0},
-                {-7, 0},
-                {0, 0}
+        return new Object[][] {
+            {2, 0},
+            {-7, 0},
+            {0, 0}
         };
     }
 
     @DataProvider()
     public static Object[][] parseDivByZeroDoubleNumbers() {
-        return new Object[][]{
-                {2.5, 0},
-                {-7.3, 0},
-                {0, 0}
+        return new Object[][] {
+            {2.5, 0},
+            {-7.3, 0},
+            {0, 0}
         };
     }
 
-    @Test(dataProvider = "parseIntNumbers")
+    @Test(groups = {Tags.MULTIPLY_AND_DIVIDE}, dataProvider = "parseIntNumbers")
     public void testDivisionIntNumbers(long a, long b, long expected) {
         long actual = calculator.div(a, b);
         Assert.assertEquals(actual, expected);
     }
 
-    @Test(dataProvider = "parseDoubleNumbers")
+    @Test(groups = {Tags.MULTIPLY_AND_DIVIDE}, dataProvider = "parseDoubleNumbers")
     public void testDivisionDoubleNumbers(double a, double b, double expected) {
         double actual = calculator.div(a, b);
         Assert.assertEquals(actual, expected, 0.01);
     }
 
-    @Test(dataProvider = "parseDivByZeroIntNumbers", expectedExceptions = NumberFormatException.class)
+    @Test(groups = {Tags.MULTIPLY_AND_DIVIDE},
+          dataProvider = "parseDivByZeroIntNumbers",
+          expectedExceptions = NumberFormatException.class)
     public void testDivisionByZeroIntNumbers(long a, long b) {
         calculator.div(a, b);
     }
 
-    @Test(dataProvider = "parseDivByZeroDoubleNumbers", expectedExceptions = ArithmeticException.class)
+    @Test(groups = {Tags.MULTIPLY_AND_DIVIDE},
+          dataProvider = "parseDivByZeroDoubleNumbers",
+          expectedExceptions = ArithmeticException.class)
     public void testDivisionByZeroDoubleNumbers(double a, double b) {
         calculator.div(a, b);
     }

@@ -11,11 +11,11 @@ public class CalculatorCosTest {
 
     @DataProvider()
     public static Object[][] parseDoubleNumbers() {
-        return new Object[][]{
-                {5.3, 0.55},
-                {4.1, -0.57},
-                {7.8, 0.53},
-                {-3.0, -0.98}
+        return new Object[][] {
+            {5.3, 0.55},
+            {4.1, -0.57},
+            {7.8, 0.53},
+            {-3.0, -0.98}
         };
     }
 

@@ -11,11 +11,11 @@ public class CalculatorCtgTest {
 
     @DataProvider()
     public static Object[][] parseDoubleNumbers() {
-        return new Object[][]{
-                {6.3, 59.46},
-                {3.1, -24.02},
-                {7.8, 0.05},
-                {-3.0, 7.01}
+        return new Object[][] {
+            {6.3, 59.46},
+            {3.1, -24.02},
+            {7.8, 0.05},
+            {-3.0, 7.01}
         };
     }
 

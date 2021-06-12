@@ -11,11 +11,11 @@ public class CalculatorTgTest {
 
     @DataProvider()
     public static Object[][] parseDoubleNumbers() {
-        return new Object[][]{
-                {6.3, 0.01},
-                {3.1, -0.04},
-                {7.8, 18.5},
-                {-3.0, 0.14}
+        return new Object[][] {
+            {6.3, 0.01},
+            {3.1, -0.04},
+            {7.8, 18.5},
+            {-3.0, 0.14}
         };
     }
 

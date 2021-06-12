@@ -11,11 +11,11 @@ public class CalculatorSqrtTest {
 
     @DataProvider()
     public static Object[][] parseDoubleNumbers() {
-        return new Object[][]{
-                {2.0, 1.41},
-                {3.1, 1.76},
-                {7.8, 2.79},
-                {-3.0, 1.73}
+        return new Object[][] {
+            {2.0, 1.41},
+            {3.1, 1.76},
+            {7.8, 2.79},
+            {-3.0, 1.73}
         };
     }
 
