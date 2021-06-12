@@ -38,6 +38,6 @@ public class CalculatorSubTest {
     @Test(dataProvider = "parseDoubleNumbers")
     public void testSubtractionDoubleNumbers(double a, double b, double expected) {
         double actual = calculator.sub(a, b);
-        Assert.assertEquals(actual, expected, 0.1);
+        Assert.assertEquals(actual, expected, 0.01);
     }
 }

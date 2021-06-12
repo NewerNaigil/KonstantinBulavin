@@ -38,6 +38,6 @@ public class CalculatorMultTest {
     @Test(dataProvider = "parseDoubleNumbers")
     public void testMultiplicationDoubleNumbers(double a, double b, double expected) {
         double actual = calculator.mult(a, b);
-        Assert.assertEquals(actual, expected);
+        Assert.assertEquals(actual, expected, 0.01);
     }
 }
