@@ -1,4 +1,4 @@
-package ru.traning.at.hw2.ex2;
+package ru.training.at.hw2.ex2;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.util.List;
@@ -10,13 +10,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import ru.traning.at.hw2.ProperTestData;
+import ru.training.at.hw2.ProperTestData;
+import ru.training.at.hw2.Tags;
 
 public class Exercise2 {
 
     private List<WebElement> webElementList;
 
-    @Test
+    @Test(groups = Tags.HW2)
     public void differentElementsPageTest() {
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();

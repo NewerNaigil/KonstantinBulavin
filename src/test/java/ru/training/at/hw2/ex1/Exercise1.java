@@ -1,4 +1,4 @@
-package ru.traning.at.hw2.ex1;
+package ru.training.at.hw2.ex1;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.util.HashSet;
@@ -11,7 +11,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import ru.traning.at.hw2.ProperTestData;
+import ru.training.at.hw2.ProperTestData;
+import ru.training.at.hw2.Tags;
 
 public class Exercise1 {
 
@@ -19,7 +20,7 @@ public class Exercise1 {
     private List<WebElement> webElementList;
     private Set<String> actualSet = new HashSet<>();
 
-    @Test
+    @Test(groups = Tags.HW2)
     public void indexPageTest() {
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
@@ -73,10 +74,9 @@ public class Exercise1 {
         // 7. Assert that there are 4 texts on the Index Page under icons and they have proper text
         webElementList = driver.findElements(By.xpath("//span [@class = 'benefit-txt']"));
         for (WebElement webElement : webElementList) {
-            actualSet.add(webElement.getText());
+            Assert.assertTrue(ProperTestData.TEXT_UNDER_ICON_SET.contains(webElement.getText()));
+
         }
-        Assert.assertEquals(actualSet, ProperTestData.TEXT_UNDER_ICON_SET);
-        actualSet.clear();
 
         // 8. Assert that there is the iframe with “Frame Button” exist
         webElementList = driver.findElements(By.xpath("//iframe[@id = 'frame' and contains (src, frame-button)]"));

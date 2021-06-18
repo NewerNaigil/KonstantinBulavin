@@ -1,4 +1,4 @@
-package ru.traning.at.hw2;
+package ru.training.at.hw2;
 
 import java.util.Set;
 
