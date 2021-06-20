@@ -75,7 +75,6 @@ public class Exercise1 {
         webElementList = driver.findElements(By.xpath("//span [@class = 'benefit-txt']"));
         for (WebElement webElement : webElementList) {
             Assert.assertTrue(ProperTestData.TEXT_UNDER_ICON_SET.contains(webElement.getText()));
-
         }
 
         // 8. Assert that there is the iframe with “Frame Button” exist
