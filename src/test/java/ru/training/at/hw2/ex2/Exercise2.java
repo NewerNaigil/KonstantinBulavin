@@ -25,7 +25,6 @@ public class Exercise2 {
 
         // 1. Open test site by URL
         driver.manage().window().maximize();
-        // timeouts
         driver.navigate().to("https://jdi-testing.github.io/jdi-light/index.html");
 
         // 2. Assert Browser title
@@ -33,8 +32,8 @@ public class Exercise2 {
 
         // 3. Perform login
         driver.findElement(By.cssSelector("a[href = '#']")).click();
-        driver.findElement(By.xpath("//input[@id = 'name']")).sendKeys("Roman");
-        driver.findElement(By.xpath("//input[@id = 'password']")).sendKeys("Jdi1234");
+        driver.findElement(By.id("name")).sendKeys("Roman");
+        driver.findElement(By.id("password")).sendKeys("Jdi1234");
         driver.findElement(By.id("login-button")).click();
         driver.navigate().refresh();
 
@@ -43,12 +42,11 @@ public class Exercise2 {
         Assert.assertEquals(driver.findElement(By.id("user-name")).getText(), "ROMAN IOVLEV");
 
         // 5. Open through the header menu Service -> Different Elements Page
-        driver.findElement(By.cssSelector("ul[class='sidebar-menu left']  li[class = 'menu-title'][index = '3']"))
-              .click();
-        driver.findElement(By.cssSelector("ul[class='sidebar-menu left']  a[href='different-elements.html']")).click();
+        driver.findElement(By.cssSelector(".menu-title")).click();
+        driver.findElement(By.cssSelector("ul[class='sidebar-menu left'] a[href='different-elements.html']")).click();
 
         // 6. Select checkboxes
-        webElementList = driver.findElements(By.cssSelector("label[class = 'label-checkbox']"));
+        webElementList = driver.findElements(By.className("label-checkbox"));
         for (WebElement webElement : webElementList) {
             if (webElement.getText().equals("Water") || webElement.getText().equals("Wind")) {
                 webElement.click();
@@ -56,8 +54,7 @@ public class Exercise2 {
         }
 
         // 7. Select radio
-        webElementList = driver.findElements(By.cssSelector("label[class = 'label-radio']"));
-        webElementList = driver.findElements(By.cssSelector("label[class = 'label-radio']"));
+        webElementList = driver.findElements(By.className("label-radio"));
         for (WebElement webElement : webElementList) {
             if (webElement.getText().equals("Selen")) {
                 webElement.click();

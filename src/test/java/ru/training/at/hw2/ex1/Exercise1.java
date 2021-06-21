@@ -35,8 +35,8 @@ public class Exercise1 {
 
         // 3. Perform login
         driver.findElement(By.cssSelector("a[href = '#']")).click();
-        driver.findElement(By.xpath("//input[@id = 'name']")).sendKeys("Roman");
-        driver.findElement(By.xpath("//input[@id = 'password']")).sendKeys("Jdi1234");
+        driver.findElement(By.id("name")).sendKeys("Roman");
+        driver.findElement(By.id("password")).sendKeys("Jdi1234");
         driver.findElement(By.id("login-button")).click();
         driver.navigate().refresh();
 
@@ -44,7 +44,7 @@ public class Exercise1 {
         Assert.assertEquals(driver.findElement(By.id("user-name")).getText(), "ROMAN IOVLEV");
 
         // 5. Assert that there are 4 items on the header section are displayed and they have proper texts
-        webElementList = driver.findElements(By.xpath("//ul[@class = 'uui-navigation nav navbar-nav m-l8']/li/a"));
+        webElementList = driver.findElements(By.cssSelector("ul[class = 'uui-navigation nav navbar-nav m-l8']>li>a"));
         for (WebElement webElement : webElementList) {
             actualSet.add(webElement.getText());
         }
@@ -72,13 +72,14 @@ public class Exercise1 {
         Assert.assertEquals(webElementList.size(), 4);
 
         // 7. Assert that there are 4 texts on the Index Page under icons and they have proper text
-        webElementList = driver.findElements(By.xpath("//span [@class = 'benefit-txt']"));
+        webElementList = driver.findElements(By.className("benefit-txt"));
         for (WebElement webElement : webElementList) {
             Assert.assertTrue(ProperTestData.TEXT_UNDER_ICON_SET.contains(webElement.getText()));
         }
 
         // 8. Assert that there is the iframe with “Frame Button” exist
-        webElementList = driver.findElements(By.xpath("//iframe[@id = 'frame' and contains (src, frame-button)]"));
+        //webElementList = driver.findElements(By.xpath("//iframe[@id = 'frame' and contains (src, frame-button)]"));
+        webElementList = driver.findElements(By.id("frame"));
         Assert.assertTrue(webElementList.size() > 0);
 
         // 9. Switch to the iframe and check that there is “Frame Button” in the iframe
