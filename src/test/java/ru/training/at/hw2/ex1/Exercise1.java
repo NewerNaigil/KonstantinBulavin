@@ -34,7 +34,7 @@ public class Exercise1 {
         Assert.assertEquals(driver.getTitle(), "Home Page");
 
         // 3. Perform login
-        driver.findElement(By.cssSelector("a[href = '#']")).click();
+        driver.findElement(By.cssSelector("li[class = 'dropdown uui-profile-menu']")).click();
         driver.findElement(By.id("name")).sendKeys("Roman");
         driver.findElement(By.id("password")).sendKeys("Jdi1234");
         driver.findElement(By.id("login-button")).click();
@@ -44,7 +44,11 @@ public class Exercise1 {
         Assert.assertEquals(driver.findElement(By.id("user-name")).getText(), "ROMAN IOVLEV");
 
         // 5. Assert that there are 4 items on the header section are displayed and they have proper texts
-        webElementList = driver.findElements(By.cssSelector("ul[class = 'uui-navigation nav navbar-nav m-l8']>li>a"));
+        webElementList = driver.findElements(By.xpath(
+            "//a[contains(text(), 'Home') "
+                + "or contains(text(), 'Contact form') "
+                + "or contains(text(), 'Service') "
+                + "or contains(text(), 'Metals & Colors')]"));
         for (WebElement webElement : webElementList) {
             actualSet.add(webElement.getText());
         }
@@ -78,7 +82,6 @@ public class Exercise1 {
         }
 
         // 8. Assert that there is the iframe with “Frame Button” exist
-        //webElementList = driver.findElements(By.xpath("//iframe[@id = 'frame' and contains (src, frame-button)]"));
         webElementList = driver.findElements(By.id("frame"));
         Assert.assertTrue(webElementList.size() > 0);
 
