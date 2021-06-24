@@ -31,7 +31,7 @@ public class Exercise2 {
         Assert.assertEquals(driver.getTitle(), "Home Page");
 
         // 3. Perform login
-        driver.findElement(By.cssSelector("a[href = '#']")).click();
+        driver.findElement(By.cssSelector("li[class = 'dropdown uui-profile-menu']")).click();
         driver.findElement(By.id("name")).sendKeys("Roman");
         driver.findElement(By.id("password")).sendKeys("Jdi1234");
         driver.findElement(By.id("login-button")).click();
