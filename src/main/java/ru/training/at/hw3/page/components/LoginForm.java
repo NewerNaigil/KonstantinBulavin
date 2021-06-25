@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class LoginForm extends AbstractComponent {
 
-    @FindBy(css = "a[href = '#']")
+    @FindBy(css = "li[class = 'dropdown uui-profile-menu']")
     private WebElement dropdownToggleCaret;
     @FindBy(id = "name")
     private WebElement nameField;
@@ -28,7 +28,7 @@ public class LoginForm extends AbstractComponent {
         loginButton.click();
     }
 
-    public String getUserNameText() {
-        return userNameElement.getText();
+    public WebElement getUserNameElement() {
+        return userNameElement;
     }
 }

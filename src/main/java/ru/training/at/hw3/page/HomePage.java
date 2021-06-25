@@ -34,11 +34,12 @@ public class HomePage extends AbstractPage {
 
     public void openPage() {
         webDriver.manage().window().maximize();
-        webDriver.navigate().to("https://jdi-testing.github.io/jdi-light/index.html");
+        webDriver.navigate().to(configFileReader.getHomePageURL());
     }
 
     public void login() {
-        loginForm.login("Roman", "Jdi1234");
+        configFileReader.loadProperty();
+        loginForm.login(configFileReader.getLogin(), configFileReader.getPassword());
         webDriver.navigate().refresh();
     }
 

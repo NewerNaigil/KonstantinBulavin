@@ -9,7 +9,10 @@ import org.openqa.selenium.support.FindBy;
 
 public class HeaderMenu extends AbstractComponent {
 
-    @FindBy(css = "ul[class = 'uui-navigation nav navbar-nav m-l8']>li>a")
+    @FindBy(xpath = "//a[contains(text(), 'Home') "
+        + "or contains(text(), 'Contact form') "
+        + "or contains(text(), 'Service') "
+        + "or contains(text(), 'Metals & Colors')]")
     private List<WebElement> headMenuItems;
 
     public HeaderMenu(WebDriver webDriver) {

@@ -2,7 +2,9 @@ package ru.training.at.hw3.test;
 
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import ru.training.at.hw3.ConfigFileReader;
 import ru.training.at.hw3.ProperTestData;
 import ru.training.at.hw3.page.HomePage;
 
@@ -23,30 +25,13 @@ public class HomePageTests extends BaseTest {
         homePage.login();
 
         // 4. Assert Username is loggined
-        Assert.assertEquals(homePage.getLoginForm().getUserNameText(), "ROMAN IOVLEV");
+        Assert.assertEquals(homePage.getLoginForm().getUserNameElement().getText(), "ROMAN IOVLEV");
 
         // 5. Assert that there are 4 items on the header section are displayed and they have proper texts
         Assert.assertEquals(homePage.getHeaderMenu().getSetOfTextHeadMenuItem(),
             ProperTestData.HEADER_SELECTOR_ITEMS_SET);
 
         // 6. Assert that there are 4 images on the Index Page and they are displayed
-
-        //        webElementList = driver.findElements(By.xpath("//Img[contains (@src, images)]"));
-        //        driver.switchTo().frame("first_frame");
-        //
-        //        webElement = driver.findElement(By.xpath("//Img[contains (@src, images)]"));
-        //        Assert.assertTrue(webElement.isDisplayed());
-        //        webElementList.addAll(driver.findElements(By.xpath("//Img[contains (@src, images)]")));
-        //
-        //        driver.switchTo().defaultContent();
-        //        driver.switchTo().frame("second_frame");
-        //        driver.switchTo().frame("frame_in_frame");
-        //
-        //        webElement = driver.findElement(By.xpath("//Img[contains (@src, images)]"));
-        //        Assert.assertTrue(webElement.isDisplayed());
-        //        webElementList.addAll(driver.findElements(By.xpath("//Img[contains (@src, images)]")));
-        //        driver.switchTo().defaultContent();
-
         Assert.assertEquals(homePage.getListOfImage().size(), 4);
 
         // 7. Assert that there are 4 texts on the Index Page under icons and they have proper text
