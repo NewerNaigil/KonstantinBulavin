@@ -1,19 +1,13 @@
-package ru.training.at.hw3.test;
+package ru.training.at.hw3;
 
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import ru.training.at.hw3.ConfigFileReader;
-import ru.training.at.hw3.ProperTestData;
-import ru.training.at.hw3.page.HomePage;
 
-public class HomePageTests extends BaseTest {
+public class HomePageTests extends AbstractTest {
 
-    @Test
+    @Test(groups = Tags.HW3)
     public void homePageTest() {
-
-        HomePage homePage = new HomePage(webDriver);
 
         // 1. Open test site by URL
         homePage.openPage();
@@ -50,9 +44,12 @@ public class HomePageTests extends BaseTest {
         homePage.getFrame().returnToHomePage();
 
         // 11. Assert that there are 5 items in the Left Section are displayed and they have proper text
-        for (WebElement webElement : homePage.getLeftSideMenu().getLestSideMenuItems()) {
+        for (WebElement webElement : homePage.getLeftSideMenu().getLeftSideMenuItems()) {
             Assert.assertTrue(webElement.isDisplayed());
         }
+
+        Assert.assertEquals(homePage.getLeftSideMenu().getSetLeftSideMenuItemText(),
+            ProperTestData.TEXT_LEFT_SECTION_SET);
 
         // 12. Close Browser
         // Browser will close in BaseTest

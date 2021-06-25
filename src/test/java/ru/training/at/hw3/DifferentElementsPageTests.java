@@ -1,23 +1,13 @@
-package ru.training.at.hw3.test;
+package ru.training.at.hw3;
 
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import ru.training.at.hw3.ProperTestData;
-import ru.training.at.hw3.page.DifferentElementsPage;
-import ru.training.at.hw3.page.HomePage;
 
-public class DifferentElementsPageTest extends BaseTest {
+public class DifferentElementsPageTests extends AbstractTest {
 
-    private HomePage homePage;
-    private DifferentElementsPage differentElementsPage;
-
-
-    @Test
+    @Test(groups = Tags.HW3)
     public void differentElementsPageTest() {
-
-        homePage = new HomePage(webDriver);
-        differentElementsPage = new DifferentElementsPage(webDriver);
 
         // 1. Open test site by URL
         homePage.openPage();
@@ -59,6 +49,5 @@ public class DifferentElementsPageTest extends BaseTest {
 
         // 10. Close Browser
         // Browser will close in BaseTest
-
     }
 }

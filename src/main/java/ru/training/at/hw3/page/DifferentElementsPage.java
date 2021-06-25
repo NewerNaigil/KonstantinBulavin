@@ -10,8 +10,8 @@ import ru.training.at.hw3.page.components.RightSideLogForm;
 
 public class DifferentElementsPage extends AbstractPage {
 
-    private LeftSideMenu leftSideMenu;
-    private RightSideLogForm rightSideLogForm;
+    LeftSideMenu leftSideMenu;
+    RightSideLogForm rightSideLogForm;
 
     @FindBy(className = "label-checkbox")
     private List<WebElement> checkboxList;

@@ -1,8 +1,8 @@
 package ru.training.at.hw3.page.components;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,10 +20,8 @@ public class HeaderMenu extends AbstractComponent {
     }
 
     public Set<String> getSetOfTextHeadMenuItem() {
-        Set<String> setOfText = new HashSet<>();
-        for (WebElement webElement : headMenuItems) {
-            setOfText.add(webElement.getText());
-        }
-        return setOfText;
+        return headMenuItems.stream()
+                            .map(WebElement::getText)
+                            .collect(Collectors.toSet());
     }
 }

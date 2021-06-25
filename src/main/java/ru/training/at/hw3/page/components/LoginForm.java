@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 public class LoginForm extends AbstractComponent {
 
     @FindBy(css = "li[class = 'dropdown uui-profile-menu']")
-    private WebElement dropdownToggleCaret;
+    private WebElement dropdownProfileMenu;
     @FindBy(id = "name")
     private WebElement nameField;
     @FindBy(id = "password")
@@ -22,7 +22,7 @@ public class LoginForm extends AbstractComponent {
     }
 
     public void login(String name, String password) {
-        dropdownToggleCaret.click();
+        dropdownProfileMenu.click();
         nameField.sendKeys(name);
         passwordField.sendKeys(password);
         loginButton.click();
