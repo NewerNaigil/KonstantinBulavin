@@ -1,6 +1,7 @@
 package ru.training.at.hw3.page;
 
 import java.util.List;
+import java.util.Set;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -46,7 +47,14 @@ public class DifferentElementsPage extends AbstractPage {
         new Select(dropdownMenu).selectByVisibleText(color);
     }
 
-    public RightSideLogForm getRightSideLogForm() {
-        return rightSideLogForm;
+    public Boolean compareLogRows(Set<String> expectedSet) {
+        for (WebElement webElement : rightSideLogForm.getLogsList()) {
+            for (String expected : expectedSet) {
+                if (!webElement.getText().contains(expected)) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }

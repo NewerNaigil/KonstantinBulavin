@@ -38,7 +38,6 @@ public class HomePage extends AbstractPage {
     }
 
     public void login() {
-        configFileReader.loadProperty();
         loginForm.login(configFileReader.getLogin(), configFileReader.getPassword());
         webDriver.navigate().refresh();
     }
