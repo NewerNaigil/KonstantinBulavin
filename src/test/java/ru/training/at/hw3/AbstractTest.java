@@ -21,7 +21,6 @@ public class AbstractTest {
         WebDriverManager.chromedriver().setup();
         webDriver = new ChromeDriver();
         webDriver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-
     }
 
     @BeforeMethod(groups = Tags.HW3)

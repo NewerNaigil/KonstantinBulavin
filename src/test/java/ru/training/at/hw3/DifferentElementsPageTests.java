@@ -1,6 +1,5 @@
 package ru.training.at.hw3;
 
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

@@ -17,5 +17,4 @@ public class RightSideLogForm extends AbstractComponent {
     public List<WebElement> getLogsList() {
         return logsList;
     }
-
 }

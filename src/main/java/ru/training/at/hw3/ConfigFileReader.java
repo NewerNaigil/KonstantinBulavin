@@ -29,7 +29,6 @@ public class ConfigFileReader {
         }
     }
 
-
     public String getLogin() {
         return properties.getProperty("login");
     }
