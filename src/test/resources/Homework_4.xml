@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Homework4Tests">
+  <test name="Homework4Tests">
+    <groups>
+      <run>
+        <include name="Homework_4"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="ru.training.at.hw4.tests.HomePageTests"/>
+      <class name="ru.training.at.hw4.tests.DifferentElementsPageTests"/>
+    </classes>
+  </test>
+</suite>
