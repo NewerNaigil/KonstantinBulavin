@@ -7,7 +7,7 @@ import ru.training.at.hw4.Tags;
 
 public class HomePageTests extends AbstractTest {
 
-    @Feature(value = "Тест UI интерфейса")
+    @Feature(value = "Test UI interface")
     @Story(value = "Home Page")
     @Test(groups = Tags.HW4)
     public void homePageTest() {
