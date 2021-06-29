@@ -11,7 +11,6 @@ import ru.training.at.hw4.page.components.RightSideLogForm;
 
 public class DifferentElementsPage extends AbstractPage {
 
-    LeftSideMenu leftSideMenu;
     RightSideLogForm rightSideLogForm;
 
     @FindBy(className = "label-checkbox")
@@ -23,7 +22,6 @@ public class DifferentElementsPage extends AbstractPage {
 
     public DifferentElementsPage(WebDriver webDriver) {
         super(webDriver);
-        leftSideMenu = new LeftSideMenu(webDriver);
         rightSideLogForm = new RightSideLogForm(webDriver);
     }
 
@@ -47,14 +45,7 @@ public class DifferentElementsPage extends AbstractPage {
         new Select(dropdownMenu).selectByVisibleText(color);
     }
 
-    public Boolean compareLogRows(Set<String> expectedSet) {
-        for (WebElement webElement : rightSideLogForm.getLogsList()) {
-            for (String expected : expectedSet) {
-                if (!webElement.getText().contains(expected)) {
-                    return false;
-                }
-            }
-        }
-        return true;
+    public RightSideLogForm getRightSideLogForm() {
+        return rightSideLogForm;
     }
 }

@@ -38,8 +38,16 @@ public class AssertionStep extends AbstractStep {
     @Step
     public void textsUnderIconsHaveProperText() {
         for (WebElement webElement : homePage.getTextUnderIcon()) {
-            Assert.assertTrue(ru.training.at.hw3.ProperTestData.TEXT_UNDER_ICON_SET
-                .contains(webElement.getText()));
+            boolean marker = false;
+            for (String expected : ProperTestData.TEXT_UNDER_ICON_SET) {
+                if (webElement.getText().contains(expected)) {
+                    marker = true;
+                    Assert.assertTrue(true);
+                }
+            }
+            if (!marker) {
+                Assert.fail();
+            }
         }
     }
 
@@ -67,9 +75,17 @@ public class AssertionStep extends AbstractStep {
 
     @Step
     public void logsHaveProperText(Set<String> logsSet) {
-        differentElementsPage.compareLogRows(logsSet);
+        for (WebElement logList : differentElementsPage.getRightSideLogForm().getLogsList()) {
+            boolean marker = false;
+            for (String expectedLogText : logsSet) {
+                if (logList.getText().contains(expectedLogText)) {
+                    marker = true;
+                    Assert.assertTrue(true);
+                }
+            }
+            if (!marker) {
+                Assert.fail();
+            }
+        }
     }
-
-    // 9. Assert checkboxes, radio and dropdown menu.
-    //differentElementsPage.compareLogRows(ProperTestData.LOGS);
 }
