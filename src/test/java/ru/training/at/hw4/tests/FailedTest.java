@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import ru.training.at.hw4.Tags;
 
 public class FailedTest extends AbstractTest {
+
     @Feature(value = "Тест UI интерфейса")
     @Story(value = "Failed Test")
     @Test(groups = Tags.HW4)
