@@ -108,12 +108,6 @@
           <argLine>
             -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectjweaver.version}/aspectjweaver-${aspectjweaver.version}.jar"
           </argLine>
-<!--          <systemProperties>-->
-<!--            <property>-->
-<!--              <name>allure.results.directory</name>-->
-<!--              <value>${project.build.directory}/allure-results</value>-->
-<!--            </property>-->
-<!--          </systemProperties>-->
         </configuration>
         <dependencies>
           <dependency>
@@ -194,19 +188,4 @@
     </profile>
 
   </profiles>
-
-<!--  <reporting>-->
-<!--    <excludeDefaults>true</excludeDefaults>-->
-<!--    <plugins>-->
-<!--      <plugin>-->
-<!--        <groupId>io.qameta.allure</groupId>-->
-<!--        <artifactId>allure-maven</artifactId>-->
-<!--        <version>${allure.plagin.version}</version>-->
-<!--        <configuration>-->
-<!--          <reportVersion>${allure.version}</reportVersion>-->
-<!--        </configuration>-->
-<!--      </plugin>-->
-<!--    </plugins>-->
-<!--  </reporting>-->
-
 </project>
