@@ -9,6 +9,7 @@
     <classes>
       <class name="ru.training.at.hw4.tests.HomePageTests"/>
       <class name="ru.training.at.hw4.tests.DifferentElementsPageTests"/>
+      <class name="ru.training.at.hw4.tests.FailedTest"/>
     </classes>
   </test>
 </suite>
