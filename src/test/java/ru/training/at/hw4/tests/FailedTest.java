@@ -5,10 +5,9 @@ import io.qameta.allure.Story;
 import org.testng.annotations.Test;
 import ru.training.at.hw4.Tags;
 
-public class HomePageTests extends AbstractTest {
-
+public class FailedTest extends AbstractTest {
     @Feature(value = "Тест UI интерфейса")
-    @Story(value = "Home Page")
+    @Story(value = "Failed Test")
     @Test(groups = Tags.HW4)
     public void homePageTest() {
 
@@ -16,7 +15,7 @@ public class HomePageTests extends AbstractTest {
         actionStep.openHomePage();
 
         // 2. Assert Browser title
-        assertionStep.assertBrowserTitle("Home Page");
+        assertionStep.assertBrowserTitle("Failed");
 
         // 3. Perform login
         actionStep.login(configFileReader.getLogin(), configFileReader.getPassword());

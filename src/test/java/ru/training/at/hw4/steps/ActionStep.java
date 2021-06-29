@@ -9,12 +9,12 @@ public class ActionStep extends AbstractStep {
         super(webDriver);
     }
 
-    @Step
+    @Step("Открыть Home Page")
     public void openHomePage() {
         homePage.openPage();
     }
 
-    @Step
+    @Step("Ввести Логин: '{login}' и Пароль: '{password}'")
     public void login(String login, String password) {
         homePage.login(login, password);
     }
