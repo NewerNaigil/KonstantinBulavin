@@ -13,6 +13,7 @@ public class AllureListener implements ITestListener {
     public void onTestFailure(ITestResult result) {
         WebDriver webDriver = (WebDriver) result.getTestContext().getAttribute("webDriver");
         //ITestListener.super.onTestFailure(result);
+        attachScreenShot(webDriver);
     }
 
     @Attachment(type = "image/png", fileExtension = ".png")

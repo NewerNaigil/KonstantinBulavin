@@ -9,7 +9,7 @@ import ru.training.at.hw4.Tags;
 public class DifferentElementsPageTests extends AbstractTest {
 
     @Feature(value = "Test UI interface")
-    @Story(value = "Different Element Page")
+    @Story(value = "Successful tests")
     @Test(groups = Tags.HW4)
     public void differentElementsPageTest() {
 
