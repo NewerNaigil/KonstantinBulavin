@@ -20,4 +20,10 @@ public class AllureListener implements ITestListener {
     private byte[] attachScreenShot(WebDriver webDriver) {
         return ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES);
     }
+
+    //    @Override
+    //    public void onTestFailure(ITestResult result) {
+    //        //ITestListener.super.onTestFailure(result);
+    //        System.out.println("The name of the testcase failed is :" + result.getName());
+    //    }
 }
