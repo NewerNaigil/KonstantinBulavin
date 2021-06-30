@@ -1,37 +1,40 @@
 package ru.training.at.hw3.page.components;
 
-import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class LeftSideMenu extends AbstractComponent {
 
-    @FindBy(css = "ul[class = 'sidebar-menu left'] > li")
-    private List<WebElement> leftSideMenuItems;
-    @FindBy(className = "menu-title")
-    private WebElement serviceMenu;
-    @FindBy(css = "ul[class='sidebar-menu left'] a[href='different-elements.html']")
-    private WebElement differentElementLink;
+    @FindBy(xpath = "//span[text() = 'Home']/..")
+    private WebElement leftSideMenuHome;
+    @FindBy(xpath = "//span[text() = 'Contact form']/..")
+    private WebElement leftSideMenuContactForm;
+    @FindBy(xpath = "//span[text() = 'Service']/..")
+    private WebElement leftSideService;
+    @FindBy(xpath = "//span[text() = 'Metals & Colors']/..")
+    private WebElement leftSideMetalsAndColors;
+    @FindBy(xpath = "//span[text() = 'Elements packs']/..")
+    private WebElement leftSideElementsPacks;
 
     public LeftSideMenu(WebDriver webDriver) {
         super(webDriver);
     }
 
-    public List<WebElement> getLeftSideMenuItems() {
-        return leftSideMenuItems;
+    public Set<WebElement> getSetLeftSideMenuItems() {
+        return Set.of(leftSideMenuHome,
+            leftSideMenuContactForm,
+            leftSideService,
+            leftSideMetalsAndColors,
+            leftSideElementsPacks);
     }
 
     public Set<String> getSetLeftSideMenuItemText() {
-        return leftSideMenuItems.stream()
-                                .map(WebElement::getText)
-                                .collect(Collectors.toSet());
-    }
-
-    public void clickToDifferentElements() {
-        serviceMenu.click();
-        differentElementLink.click();
+        return Set.of(leftSideMenuHome.getText(),
+            leftSideMenuContactForm.getText(),
+            leftSideService.getText(),
+            leftSideMetalsAndColors.getText(),
+            leftSideElementsPacks.getText());
     }
 }

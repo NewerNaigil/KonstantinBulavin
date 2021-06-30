@@ -44,7 +44,7 @@ public class HomePageTests extends AbstractTest {
         homePage.getFrame().returnToHomePage();
 
         // 11. Assert that there are 5 items in the Left Section are displayed and they have proper text
-        for (WebElement webElement : homePage.getLeftSideMenu().getLeftSideMenuItems()) {
+        for (WebElement webElement : homePage.getLeftSideMenu().getSetLeftSideMenuItems()) {
             Assert.assertTrue(webElement.isDisplayed());
         }
 

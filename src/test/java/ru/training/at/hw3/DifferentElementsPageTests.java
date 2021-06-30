@@ -22,7 +22,7 @@ public class DifferentElementsPageTests extends AbstractTest {
         Assert.assertEquals(homePage.getLoginForm().getUserNameElement().getText(), "ROMAN IOVLEV");
 
         // 5. Open through the header menu Service -> Different Elements Page
-        homePage.getLeftSideMenu().clickToDifferentElements();
+        homePage.getHeaderMenu().clickToDifferentElements();
 
         // 6. Select checkboxes
         differentElementsPage.selectCheckbox("Water");

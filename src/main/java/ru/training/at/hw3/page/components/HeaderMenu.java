@@ -7,14 +7,16 @@ import org.openqa.selenium.support.FindBy;
 
 public class HeaderMenu extends AbstractComponent {
 
-    @FindBy(linkText = "Home")
+    @FindBy(css = "a[href = 'index.html']")
     private WebElement home;
-    @FindBy(linkText = "Contact form")
+    @FindBy(css = "a[href = 'contacts.html']")
     private WebElement contactForm;
-    @FindBy(linkText = "Service")
+    @FindBy(css = ".dropdown-toggle")
     private WebElement service;
-    @FindBy(linkText = "Metals & Colors")
+    @FindBy(css = "a[href = 'metals-colors.html']")
     private WebElement metalAndColors;
+    @FindBy(css = "a[href = 'different-elements.html']")
+    private WebElement differentElements;
 
     public HeaderMenu(WebDriver webDriver) {
         super(webDriver);
@@ -22,5 +24,14 @@ public class HeaderMenu extends AbstractComponent {
 
     public Set<String> getSetOfTextHeadMenuItem() {
         return Set.of(home.getText(), contactForm.getText(), service.getText(), metalAndColors.getText());
+    }
+
+    public void clickToDifferentElements() {
+        service.click();
+        differentElements.click();
+    }
+
+    public WebElement getHome() {
+        return home;
     }
 }
