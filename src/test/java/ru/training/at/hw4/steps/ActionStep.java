@@ -19,7 +19,7 @@ public class ActionStep extends AbstractStep {
         homePage.login(login, password);
     }
 
-    @Step
+    @Step("")
     public void goToDifferentElementsPageThroughLeftSideMenu() {
         homePage.getLeftSideMenu().clickToDifferentElements();
     }

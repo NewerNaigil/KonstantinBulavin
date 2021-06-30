@@ -4,6 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -28,11 +29,12 @@ public class AbstractTest {
     }
 
     @BeforeMethod(groups = Tags.HW4)
-    public void prepareTest() {
+    public void prepareTest(ITestContext testContext) {
         actionStep = new ActionStep(webDriver);
         assertionStep = new AssertionStep(webDriver);
         configFileReader = new ConfigFileReader();
         configFileReader.loadProperty();
+        testContext.setAttribute("webDriver", webDriver);
     }
 
     @AfterClass(groups = Tags.HW4)
