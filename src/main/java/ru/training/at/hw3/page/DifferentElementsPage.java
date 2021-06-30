@@ -2,6 +2,7 @@ package ru.training.at.hw3.page;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,8 +12,8 @@ import ru.training.at.hw3.page.components.RightSideLogForm;
 
 public class DifferentElementsPage extends AbstractPage {
 
-    LeftSideMenu leftSideMenu;
-    RightSideLogForm rightSideLogForm;
+    private LeftSideMenu leftSideMenu;
+    private RightSideLogForm rightSideLogForm;
 
     @FindBy(className = "label-checkbox")
     private List<WebElement> checkboxList;
@@ -47,14 +48,9 @@ public class DifferentElementsPage extends AbstractPage {
         new Select(dropdownMenu).selectByVisibleText(color);
     }
 
-    public Boolean compareLogRows(Set<String> expectedSet) {
-        for (WebElement webElement : rightSideLogForm.getLogsList()) {
-            for (String expected : expectedSet) {
-                if (!webElement.getText().contains(expected)) {
-                    return false;
-                }
-            }
-        }
-        return true;
+    public Set<String> getLogRows() {
+        return rightSideLogForm.getLogsList().stream()
+                        .map(x -> x.getText().substring(9))
+                        .collect(Collectors.toSet());
     }
 }

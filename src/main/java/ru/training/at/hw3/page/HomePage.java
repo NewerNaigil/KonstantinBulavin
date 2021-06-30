@@ -12,10 +12,10 @@ import ru.training.at.hw3.page.components.LoginForm;
 
 public class HomePage extends AbstractPage {
 
-    LoginForm loginForm;
-    HeaderMenu headerMenu;
-    LeftSideMenu leftSideMenu;
-    Frame frame;
+    private LoginForm loginForm;
+    private HeaderMenu headerMenu;
+    private LeftSideMenu leftSideMenu;
+    private Frame frame;
 
     @FindBy(className = "benefit-txt")
     private List<WebElement> textUnderIconList;

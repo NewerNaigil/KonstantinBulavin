@@ -35,7 +35,7 @@ public class DifferentElementsPageTests extends AbstractTest {
         differentElementsPage.selectDropdownMenu("Yellow");
 
         // 9. Assert checkboxes, radio and dropdown menu.
-        differentElementsPage.compareLogRows(ProperTestData.LOGS);
+        Assert.assertEquals(differentElementsPage.getLogRows(), ProperTestData.LOGS);
     }
 
     // 10. Close Browser
