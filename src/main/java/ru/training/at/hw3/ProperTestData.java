@@ -4,7 +4,7 @@ import java.util.Set;
 
 public class ProperTestData {
     public static final Set<String> HEADER_SELECTOR_ITEMS_SET =
-        Set.of("HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS");
+        Set.of("Home", "Contact form", "Service", "Metals & Colors");
 
     public static final Set<String> TEXT_UNDER_ICON_SET =
         Set.of("To include good practices\nand ideas from successful\nEPAM project",
