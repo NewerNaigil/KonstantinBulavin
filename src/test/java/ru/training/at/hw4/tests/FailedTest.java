@@ -2,10 +2,8 @@ package ru.training.at.hw4.tests;
 
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import ru.training.at.hw4.Tags;
-import ru.training.at.hw4.listeners.AllureListener;
 
 public class FailedTest extends AbstractTest {
 
