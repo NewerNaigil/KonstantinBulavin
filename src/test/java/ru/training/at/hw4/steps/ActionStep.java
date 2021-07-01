@@ -21,7 +21,7 @@ public class ActionStep extends AbstractStep {
 
     @Step("Open through the header menu Service -> Different Elements Page")
     public void goToDifferentElementsPageThroughLeftSideMenu() {
-        homePage.getLeftSideMenu().clickToDifferentElements();
+        homePage.getHeaderMenu().clickToDifferentElements();
     }
 
     @Step("Select checkbox: '{checkboxText}'")

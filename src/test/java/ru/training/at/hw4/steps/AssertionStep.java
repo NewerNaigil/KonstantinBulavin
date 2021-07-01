@@ -2,6 +2,7 @@ package ru.training.at.hw4.steps;
 
 import io.qameta.allure.Step;
 import java.util.Set;
+import java.util.stream.Collectors;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -37,18 +38,11 @@ public class AssertionStep extends AbstractStep {
 
     @Step("Assert that there are 4 texts on the Index Page under icons and they have proper text")
     public void textsUnderIconsHaveProperText() {
-        for (WebElement webElement : homePage.getTextUnderIcon()) {
-            boolean marker = false;
-            for (String expected : ProperTestData.TEXT_UNDER_ICON_SET) {
-                if (webElement.getText().contains(expected)) {
-                    marker = true;
-                    Assert.assertTrue(true);
-                }
-            }
-            if (!marker) {
-                Assert.fail();
-            }
-        }
+        Set<String> reSet = homePage.getTextUnderIcon().stream()
+            .map(WebElement::getText)
+            .collect(Collectors.toSet());
+
+        Assert.assertEquals(reSet, ProperTestData.TEXT_UNDER_ICON_SET);
     }
 
     @Step("Assert that there is the iframe with “Frame Button” exist")
@@ -65,7 +59,7 @@ public class AssertionStep extends AbstractStep {
 
     @Step("Assert that there are 5 items in the Left Section are displayed and they have proper text")
     public void fiveItemsInLeftSectionDisplayedAndHaveProperText() {
-        for (WebElement webElement : homePage.getLeftSideMenu().getLeftSideMenuItems()) {
+        for (WebElement webElement : homePage.getLeftSideMenu().getSetLeftSideMenuItems()) {
             Assert.assertTrue(webElement.isDisplayed());
         }
 
@@ -75,17 +69,6 @@ public class AssertionStep extends AbstractStep {
 
     @Step("Assert checkboxes, radio and dropdown menu.")
     public void logsHaveProperText(Set<String> logsSet) {
-        for (WebElement logList : differentElementsPage.getRightSideLogForm().getLogsList()) {
-            boolean marker = false;
-            for (String expectedLogText : logsSet) {
-                if (logList.getText().contains(expectedLogText)) {
-                    marker = true;
-                    Assert.assertTrue(true);
-                }
-            }
-            if (!marker) {
-                Assert.fail();
-            }
-        }
+        Assert.assertEquals(differentElementsPage.getLogRows(), logsSet);
     }
 }
