@@ -113,6 +113,7 @@
             <property>
               <name>listener</name>
               <value>ru.training.at.hw4.listeners.AllureListener</value>
+              <excludeDefaults>true</excludeDefaults>
             </property>
           </properties>
         </configuration>
@@ -181,6 +182,7 @@
     <profile>
       <id>Homework4</id>
       <build>
+
         <plugins>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
