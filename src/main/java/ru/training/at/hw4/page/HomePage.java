@@ -13,10 +13,10 @@ import ru.training.at.hw4.page.components.LoginForm;
 public class HomePage extends AbstractPage {
 
     private static final String PAGE_URL = "https://jdi-testing.github.io/jdi-light/index.html";
-    LoginForm loginForm;
-    HeaderMenu headerMenu;
-    LeftSideMenu leftSideMenu;
-    Frame frame;
+    private LoginForm loginForm;
+    private HeaderMenu headerMenu;
+    private LeftSideMenu leftSideMenu;
+    private Frame frame;
 
     @FindBy(className = "benefit-txt")
     private List<WebElement> textUnderIconList;

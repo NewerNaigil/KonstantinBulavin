@@ -1,6 +1,5 @@
 package ru.training.at.hw4.steps;
 
-import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import ru.training.at.hw4.page.DifferentElementsPage;
 import ru.training.at.hw4.page.HomePage;
