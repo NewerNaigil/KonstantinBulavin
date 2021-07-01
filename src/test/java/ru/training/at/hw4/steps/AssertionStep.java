@@ -39,8 +39,8 @@ public class AssertionStep extends AbstractStep {
     @Step("Assert that there are 4 texts on the Index Page under icons and they have proper text")
     public void textsUnderIconsHaveProperText() {
         Set<String> reSet = homePage.getTextUnderIcon().stream()
-            .map(WebElement::getText)
-            .collect(Collectors.toSet());
+                                    .map(WebElement::getText)
+                                    .collect(Collectors.toSet());
 
         Assert.assertEquals(reSet, ProperTestData.TEXT_UNDER_ICON_SET);
     }
