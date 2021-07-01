@@ -37,7 +37,4 @@ public class ConfigFileReader {
         return properties.getProperty("password");
     }
 
-    public String getHomePageURL() {
-        return properties.getProperty("homePageURL");
-    }
 }

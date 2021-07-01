@@ -12,7 +12,6 @@ public class AllureListener implements ITestListener {
     @Override
     public void onTestFailure(ITestResult result) {
         WebDriver webDriver = (WebDriver) result.getTestContext().getAttribute("webDriver");
-        //ITestListener.super.onTestFailure(result);
         attachScreenShot(webDriver);
     }
 
@@ -20,10 +19,4 @@ public class AllureListener implements ITestListener {
     private byte[] attachScreenShot(WebDriver webDriver) {
         return ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES);
     }
-
-    //    @Override
-    //    public void onTestFailure(ITestResult result) {
-    //        //ITestListener.super.onTestFailure(result);
-    //        System.out.println("The name of the testcase failed is :" + result.getName());
-    //    }
 }
