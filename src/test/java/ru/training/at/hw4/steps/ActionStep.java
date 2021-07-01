@@ -19,22 +19,22 @@ public class ActionStep extends AbstractStep {
         homePage.login(login, password);
     }
 
-    @Step("")
+    @Step("Open through the header menu Service -> Different Elements Page")
     public void goToDifferentElementsPageThroughLeftSideMenu() {
         homePage.getLeftSideMenu().clickToDifferentElements();
     }
 
-    @Step
+    @Step("Select checkbox: '{checkboxText}'")
     public void selectCheckbox(String checkboxText) {
         differentElementsPage.selectCheckbox(checkboxText);
     }
 
-    @Step
+    @Step("Select radio button: '{radioText}'")
     public void selectRadioButton(String radioText) {
         differentElementsPage.selectRadioButton(radioText);
     }
 
-    @Step
+    @Step("Select in dropdown: '{dropdownText}'")
     public void selectInDropdownMenu(String dropdownText) {
         differentElementsPage.selectDropdownMenu(dropdownText);
     }
