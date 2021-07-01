@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 import ru.training.at.hw4.Tags;
 import ru.training.at.hw4.listeners.AllureListener;
 
-@Listeners(AllureListener.class)
 public class FailedTest extends AbstractTest {
 
     @Feature(value = "Test UI interface")
