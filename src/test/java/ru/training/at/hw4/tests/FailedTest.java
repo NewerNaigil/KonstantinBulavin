@@ -22,7 +22,7 @@ public class FailedTest extends AbstractTest {
         assertionStep.assertBrowserTitle("Home Page");
 
         // 3. Perform login
-        actionStep.login("Vadim", "1234");
+        actionStep.login(configFileReader.getIncorrectLogin(), configFileReader.getIncorrectPassword());
 
         // 4. Assert Username is loggined
         assertionStep.usernameIsLoggined();

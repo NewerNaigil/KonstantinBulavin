@@ -37,4 +37,12 @@ public class ConfigFileReader {
         return properties.getProperty("password");
     }
 
+    public String getIncorrectLogin() {
+        return properties.getProperty("incorrectLogin");
+    }
+
+    public String getIncorrectPassword() {
+        return properties.getProperty("incorrectPassword");
+    }
+
 }
