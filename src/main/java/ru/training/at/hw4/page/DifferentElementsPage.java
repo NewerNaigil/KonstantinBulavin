@@ -11,7 +11,7 @@ import ru.training.at.hw4.page.components.RightSideLogForm;
 
 public class DifferentElementsPage extends AbstractPage {
 
-    RightSideLogForm rightSideLogForm;
+    private RightSideLogForm rightSideLogForm;
 
     @FindBy(className = "label-checkbox")
     private List<WebElement> checkboxList;

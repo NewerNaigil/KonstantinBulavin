@@ -16,6 +16,8 @@
     <allure.version>2.14.0</allure.version>
     <aspectjweaver.version>1.9.5</aspectjweaver.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <cucumber-testng.version>6.10.4</cucumber-testng.version>
+    <cucumber-java.version>6.10.4</cucumber-java.version>
   </properties>
 
   <dependencies>
@@ -54,6 +56,20 @@
       <version>${allure.version}</version>
       <scope>test</scope>
     </dependency>
+
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-testng</artifactId>
+      <version>${cucumber-testng.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-java</artifactId>
+      <version>${cucumber-java.version}</version>
+    </dependency>
+
+
 
   </dependencies>
 
