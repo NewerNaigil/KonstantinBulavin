@@ -27,11 +27,5 @@ public class GivenSteps extends AbstractStep {
     @Given("I click on 'User Table' button in Service dropdown")
     public void clickOnUserTableInServiceDropdown() {
         homePage.getHeaderMenu().clickToUserTable();
-        //userTablePage.createTable();
     }
-
-    //    Given I open JDI GitHub site
-    //    And I login as user "Roman Iovlev"
-    //    And I click on "Service" button in Header
-    //    And I click on 'Different Element' button in "Service" dropdown
 }

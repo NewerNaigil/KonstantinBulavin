@@ -12,7 +12,7 @@ import ru.training.at.hw5.testdata.ProperTestData;
 
 public class ThenSteps extends AbstractStep {
 
-    @Then("log row has {string} text in log selection")
+    @Then("1 log row has {string} text in log section")
     public void logRowShouldContainsProperTextInLogSelection(String logRow) {
         Assert.assertTrue(ProperTestData.LOGS.contains(logRow));
     }
@@ -26,7 +26,6 @@ public class ThenSteps extends AbstractStep {
         userTablePage.getListType().stream()
                      .map(WebElement::isDisplayed)
                      .forEach(Assert::assertTrue);
-
 
         Assert.assertEquals(userTablePage.getListNumbers().size(), 6);
         Assert.assertEquals(userTablePage.getListType().size(), 6);

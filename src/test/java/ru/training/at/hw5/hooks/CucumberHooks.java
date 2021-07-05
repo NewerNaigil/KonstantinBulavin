@@ -15,7 +15,6 @@ public class CucumberHooks {
     @After
     public void closeDriver() {
         WebDriverSingleton.closeDriver();
-        //TestContext.getInstance().clean();
     }
 
     //    @Before

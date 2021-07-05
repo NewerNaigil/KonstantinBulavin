@@ -1,6 +1,7 @@
 package ru.training.at.hw5.steps;
 
 import io.cucumber.java.en.When;
+import org.openqa.selenium.WebElement;
 
 public class WhenSteps extends AbstractStep {
 
@@ -21,9 +22,8 @@ public class WhenSteps extends AbstractStep {
 
     @When("I select 'vip' checkbox for {string}")
     public void selectVipCheckbox(String userName) {
-        //userTablePage.selectCheckbox(userName);
+        userTablePage.getListCheckbox().stream()
+                     .filter(x -> x.getAttribute("id").equals("ivan"))
+                     .forEach(WebElement::click);
     }
-
-    //    When I select 'vip' checkbox for "Sergey Ivan"
-    //    Then 1 log row has "Vip: condition changed to true" text in log section
 }

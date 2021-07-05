@@ -19,7 +19,7 @@ public class ProperTestData {
 
     public static final Set<String> LOGS =
         Set.of("Colors: value changed to Yellow", "metal: value changed to Selen", "Wind: condition changed to true",
-            "Water: condition changed to true");
+            "Water: condition changed to true", "Vip: condition changed to true");
 
     public static final List<String> USER_TABLE_NUMRESR =
         List.of("1", "2", "3", "4", "5", "6");
