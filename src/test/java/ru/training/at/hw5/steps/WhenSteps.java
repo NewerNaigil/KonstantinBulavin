@@ -20,8 +20,8 @@ public class WhenSteps extends AbstractStep {
         differentElementsPage.selectDropdownMenu(dropdownMenuText);
     }
 
-    @When("I select 'vip' checkbox for {string}")
-    public void selectVipCheckbox(String userName) {
+    @When("I select 'vip' checkbox for 'Sergey Ivan'")
+    public void selectVipCheckbox() {
         userTablePage.getListCheckbox().stream()
                      .filter(x -> x.getAttribute("id").equals("ivan"))
                      .forEach(WebElement::click);

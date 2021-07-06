@@ -44,5 +44,4 @@ public class ConfigFileReader {
     public String getIncorrectPassword() {
         return properties.getProperty("incorrectPassword");
     }
-
 }

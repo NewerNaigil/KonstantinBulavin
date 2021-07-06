@@ -26,7 +26,7 @@ public class UserTablePage extends AbstractPage {
     public List<WebElement> getListNumbers() {
         List<WebElement> result = new ArrayList<>();
         for (int i = 1; i <= rowList.size(); i++) {
-            result.add(webDriver.findElement(By.xpath("//table[@id = 'user-table']/tbody/tr[" + i + "]/td")));
+            result.add(webDriver.findElement(By.xpath("//tr[" + i + "]/td")));
         }
         return result;
     }
@@ -34,7 +34,7 @@ public class UserTablePage extends AbstractPage {
     public List<WebElement> getListType() {
         List<WebElement> result = new ArrayList<>();
         for (int i = 1; i <= rowList.size(); i++) {
-            result.add(webDriver.findElement(By.xpath("//table[@id = 'user-table']/tbody/tr[" + i + "]//select")));
+            result.add(webDriver.findElement(By.xpath("//tr[" + i + "]//select")));
         }
         return result;
     }
@@ -42,7 +42,7 @@ public class UserTablePage extends AbstractPage {
     public List<WebElement> getListUsername() {
         List<WebElement> result = new ArrayList<>();
         for (int i = 1; i <= rowList.size(); i++) {
-            result.add(webDriver.findElement(By.xpath("//table[@id = 'user-table']/tbody/tr[" + i + "]//a")));
+            result.add(webDriver.findElement(By.xpath("//tr[" + i + "]//a")));
         }
         return result;
     }
@@ -50,7 +50,7 @@ public class UserTablePage extends AbstractPage {
     public List<WebElement> getListDescription() {
         List<WebElement> result = new ArrayList<>();
         for (int i = 1; i <= rowList.size(); i++) {
-            result.add(webDriver.findElement(By.xpath("//table[@id = 'user-table']/tbody/tr[" + i + "]//span")));
+            result.add(webDriver.findElement(By.xpath("//tr[" + i + "]//span")));
         }
         return result;
     }
@@ -58,7 +58,7 @@ public class UserTablePage extends AbstractPage {
     public List<WebElement> getListCheckbox() {
         List<WebElement> result = new ArrayList<>();
         for (int i = 1; i <= rowList.size(); i++) {
-            result.add(webDriver.findElement(By.xpath("//table[@id = 'user-table']/tbody/tr[" + i + "]//input")));
+            result.add(webDriver.findElement(By.xpath("//tr[" + i + "]//input")));
         }
         return result;
     }
@@ -69,8 +69,8 @@ public class UserTablePage extends AbstractPage {
         result.add("Dropdown Values");
 
         dropdownOptionList.stream()
-                .map(WebElement::getText)
-                .forEach(result::add);
+                          .map(WebElement::getText)
+                          .forEach(result::add);
 
         return result;
     }
@@ -86,15 +86,9 @@ public class UserTablePage extends AbstractPage {
                 columns.add(webDriver.findElement(By.xpath("//th[text() = 'Description']")).getText());
                 rows.add(columns);
             } else {
-                columns.add(
-                    webDriver.findElement(By.xpath("//table[@id = 'user-table']/tbody/tr[" + i + "]/td"))
-                             .getText());
-                columns.add(
-                    webDriver.findElement(By.xpath("//table[@id = 'user-table']/tbody/tr[" + i + "]//a"))
-                             .getText());
-                columns.add(
-                    webDriver.findElement(By.xpath("//table[@id = 'user-table']/tbody/tr[" + i + "]//span"))
-                             .getText());
+                columns.add(webDriver.findElement(By.xpath("//tr[" + i + "]/td")).getText());
+                columns.add(webDriver.findElement(By.xpath("//tr[" + i + "]//a")).getText());
+                columns.add(webDriver.findElement(By.xpath("//tr[" + i + "]//span")).getText());
 
                 rows.add(columns.stream()
                                 .map(x -> x.replaceAll("\n", " "))
