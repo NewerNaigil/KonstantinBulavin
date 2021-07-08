@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Homework6Tests">
+  <listeners>
+    <listener class-name="ru.training.at.hw4.listeners.AllureListener"/>
+  </listeners>
+  <test name="Homework6Tests">
+    <groups>
+      <run>
+        <include name="Homework_6"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="ru.training.at.hw6.tests.HomePageTests"/>
+      <class name="ru.training.at.hw6.tests.DifferentElementsPageTests"/>
+    </classes>
+  </test>
+</suite>
