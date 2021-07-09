@@ -7,6 +7,7 @@ import javax.management.openmbean.InvalidOpenTypeException;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.opera.OperaDriver;
@@ -57,7 +58,7 @@ public class WebDriverFactory {
     }
 
     private static WebDriver createRemoteDriver(String browserName) {
-        Capabilities capabilities;
+        Capabilities capabilities = null;
         if (CHROME.equalsIgnoreCase(browserName)) {
             capabilities = createChromeCapabilities();
         } else {
@@ -80,7 +81,7 @@ public class WebDriverFactory {
     }
 
     private static Capabilities createChromeCapabilities() {
-        return new FirefoxOptions();
+        return new ChromeOptions();
     }
 
     private static WebDriver createFirefox() {
