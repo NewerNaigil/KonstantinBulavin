@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.epam.tc</groupId>
-    <artifactId>Konstantin_Bulavin</artifactId>
-    <version>1.0-SNAPSHOT</version>
+  <groupId>com.epam.tc</groupId>
+  <artifactId>Konstantin_Bulavin</artifactId>
+  <version>1.0-SNAPSHOT</version>
 
-    <properties>
-      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-        <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
-        <selenium-java.version>3.141.59</selenium-java.version>
-        <webdrivermanager.version>4.4.3</webdrivermanager.version>
-        <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
-        <checkstyle.version>8.42</checkstyle.version>
-        <allure-testng.version>2.14.0</allure-testng.version>
-      <allure-maven.version>2.10.0</allure-maven.version>
-      <aspectjweaver.version>1.9.5</aspectjweaver.version>
-      <testng.version>7.4.0</testng.version>
-    </properties>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
+    <selenium-java.version>3.141.59</selenium-java.version>
+    <webdrivermanager.version>4.4.3</webdrivermanager.version>
+    <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
+    <checkstyle.version>8.42</checkstyle.version>
+    <allure-testng.version>2.14.0</allure-testng.version>
+    <allure-maven.version>2.10.0</allure-maven.version>
+    <aspectjweaver.version>1.9.5</aspectjweaver.version>
+    <testng.version>7.4.0</testng.version>
+    <cucumber.version>6.10.4</cucumber.version>
+  </properties>
 
   <dependencies>
 
@@ -59,6 +60,25 @@
       <version>${allure-testng.version}</version>
       <scope>test</scope>
     </dependency>
+
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-testng</artifactId>
+      <version>${cucumber.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-java</artifactId>
+      <version>${cucumber.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.github.bonigarcia</groupId>
+      <artifactId>webdrivermanager</artifactId>
+      <version>4.4.3</version>
+      <scope>compile</scope>
+    </dependency>
+
 
   </dependencies>
 
@@ -169,6 +189,22 @@
     </profile>
 
     <profile>
+      <id>homework2</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>${maven-surefire-plugin.version}</version>
+            <configuration>
+              <suiteXmlFiles>src/test/resources/homework_2.xml</suiteXmlFiles>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
       <id>Homework3</id>
       <build>
         <plugins>
@@ -194,6 +230,22 @@
             <version>${maven-surefire-plugin.version}</version>
             <configuration>
               <suiteXmlFiles>src/test/resources/Homework_4.xml</suiteXmlFiles>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>Homework5</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>${maven-surefire-plugin.version}</version>
+            <configuration>
+              <suiteXmlFiles>src/test/resources/testngconfigs/Homework_5.xml</suiteXmlFiles>
             </configuration>
           </plugin>
         </plugins>
