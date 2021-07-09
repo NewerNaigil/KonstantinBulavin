@@ -17,7 +17,6 @@ public class WebDriverFactory {
     private static final String CHROME = "CHROME";
     private static final String FIREFOX = "FIREFOX";
     private static final String OPERA = "OPERA";
-    private static final String EDJE = "MicrosoftEdge";
 
     private static final String REMOTE_DRIVER_TYPE = "remote";
     private static final String LOCAL_DRIVER_TYPE = "local";
@@ -58,7 +57,7 @@ public class WebDriverFactory {
     }
 
     private static WebDriver createRemoteDriver(String browserName) {
-        Capabilities capabilities = null;
+        Capabilities capabilities;
         if (CHROME.equalsIgnoreCase(browserName)) {
             capabilities = createChromeCapabilities();
         } else {
