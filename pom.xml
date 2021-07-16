@@ -51,7 +51,6 @@
       <groupId>io.github.bonigarcia</groupId>
       <artifactId>webdrivermanager</artifactId>
       <version>${webdrivermanager.version}</version>
-      <scope>test</scope>
     </dependency>
 
     <dependency>
@@ -72,13 +71,6 @@
       <artifactId>cucumber-java</artifactId>
       <version>${cucumber.version}</version>
     </dependency>
-    <dependency>
-      <groupId>io.github.bonigarcia</groupId>
-      <artifactId>webdrivermanager</artifactId>
-      <version>4.4.3</version>
-      <scope>compile</scope>
-    </dependency>
-
 
   </dependencies>
 
@@ -165,7 +157,7 @@
             <artifactId>maven-surefire-plugin</artifactId>
             <version>${maven-surefire-plugin.version}</version>
             <configuration>
-              <suiteXmlFiles>src/test/resources/MultiplyAndDivideOperationsTests.xml</suiteXmlFiles>
+              <suiteXmlFiles>src/test/resources/testngconfigs/MultiplyAndDivideOperationsTests.xml</suiteXmlFiles>
             </configuration>
           </plugin>
         </plugins>
@@ -181,7 +173,7 @@
             <artifactId>maven-surefire-plugin</artifactId>
             <version>${maven-surefire-plugin.version}</version>
             <configuration>
-              <suiteXmlFiles>src/test/resources/AllCalculatorTests.xml</suiteXmlFiles>
+              <suiteXmlFiles>src/test/resources/testngconfigs/AllCalculatorTests.xml</suiteXmlFiles>
             </configuration>
           </plugin>
         </plugins>
@@ -197,7 +189,7 @@
             <artifactId>maven-surefire-plugin</artifactId>
             <version>${maven-surefire-plugin.version}</version>
             <configuration>
-              <suiteXmlFiles>src/test/resources/homework_2.xml</suiteXmlFiles>
+              <suiteXmlFiles>src/test/resources/testngconfigs/homework_2.xml</suiteXmlFiles>
             </configuration>
           </plugin>
         </plugins>
@@ -213,7 +205,7 @@
             <artifactId>maven-surefire-plugin</artifactId>
             <version>${maven-surefire-plugin.version}</version>
             <configuration>
-              <suiteXmlFiles>src/test/resources/Homework_3.xml</suiteXmlFiles>
+              <suiteXmlFiles>src/test/resources/testngconfigs/Homework_3.xml</suiteXmlFiles>
             </configuration>
           </plugin>
         </plugins>
@@ -229,7 +221,7 @@
             <artifactId>maven-surefire-plugin</artifactId>
             <version>${maven-surefire-plugin.version}</version>
             <configuration>
-              <suiteXmlFiles>src/test/resources/Homework_4.xml</suiteXmlFiles>
+              <suiteXmlFiles>src/test/resources/testngconfigs/Homework_4.xml</suiteXmlFiles>
             </configuration>
           </plugin>
         </plugins>
