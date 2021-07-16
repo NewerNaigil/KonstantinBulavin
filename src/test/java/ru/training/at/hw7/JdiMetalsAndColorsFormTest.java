@@ -14,21 +14,6 @@ import ru.training.at.hw7.entities.User;
 
 public class JdiMetalsAndColorsFormTest extends JdiAbstractTest {
 
-    @Test
-    public void loginTest() {
-        JdiSite.open();
-        JdiSite.login(User.ROMAN);
-        String actualFullName = JdiSite.getTextUserName();
-
-        JdiSite.jdiHomePage.getUserName().is().text(User.ROMAN.getFullName());
-    }
-
-    @Test
-    public void mtTest() {
-        JdiSite.headerSection.headMenu.select("Metals & Colors");
-
-    }
-
     @DataProvider(name = "TestData")
     public static Object[][] getJson() {
 
@@ -55,6 +40,13 @@ public class JdiMetalsAndColorsFormTest extends JdiAbstractTest {
 
     @Test(dataProvider = "TestData")
     public void demoTest(MetalAndColorsData metalAndColorsData) {
-        System.out.println(metalAndColorsData.color);
+
+
+        JdiSite.headerSection.headMenu.select("Metals & Colors");
+
+        JdiSite.metalAndColorsPage.metalColorsForm.fillForm(metalAndColorsData);
+        JdiSite.metalAndColorsPage.metalColorsForm.clickSubmitButton();
+
+
     }
 }

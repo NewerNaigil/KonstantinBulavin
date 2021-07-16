@@ -2,6 +2,7 @@ package ru.training.at.hw7.forms;
 
 import com.epam.jdi.light.elements.common.UIElement;
 import com.epam.jdi.light.elements.complex.Checklist;
+import com.epam.jdi.light.elements.complex.WebList;
 import com.epam.jdi.light.elements.complex.dropdown.Dropdown;
 import com.epam.jdi.light.elements.composite.Form;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.JDropdown;
@@ -12,10 +13,10 @@ import ru.training.at.hw7.entities.MetalAndColorsData;
 
 public class MetalColorsForm extends Form<MetalAndColorsData> {
 
-    @UI("p.radio")
+    @UI("input[type = 'radio']")
     private static RadioButtons summary;
 
-    @UI("p.checkbox")
+    @UI(".vertical-group input")
     private static Checklist elements;
 
     @JDropdown(
@@ -41,5 +42,31 @@ public class MetalColorsForm extends Form<MetalAndColorsData> {
 
     @UI("ul[class = 'panel-body-list results'] li")
     private static UIElement result;
+
+    public void fillForm(MetalAndColorsData metalAndColorsData) {
+        summary.select(metalAndColorsData.getSummary().get(0));
+        summary.select(metalAndColorsData.getSummary().get(1));
+
+        for (String elementText : metalAndColorsData.getElements()) {
+            elements.select(elementText);
+        }
+
+        colors.expand();
+        colors.select(metalAndColorsData.getColor());
+
+        metals.expand();
+        metals.select(metalAndColorsData.getMetals());
+
+        vegetables.expand();
+        vegetables.select("Vegetables");
+        for (String vegetablesText : metalAndColorsData.getVegetables()) {
+            vegetables.select(vegetablesText);
+        }
+
+    }
+
+    public void clickSubmitButton() {
+        submit.click();
+    }
 
 }

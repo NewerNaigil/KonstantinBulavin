@@ -7,6 +7,7 @@ import ru.training.at.hw7.entities.User;
 import ru.training.at.hw7.page.JdiHomePage;
 import ru.training.at.hw7.page.JdiMetalAndColorsPage;
 import ru.training.at.hw7.section.HeaderSection;
+import ru.training.at.hw7.section.RightSideResultSection;
 
 @JSite("https://jdi-testing.github.io/jdi-light/")
 public class JdiSite {

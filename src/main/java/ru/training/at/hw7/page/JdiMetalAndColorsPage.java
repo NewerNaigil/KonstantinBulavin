@@ -3,10 +3,12 @@ package ru.training.at.hw7.page;
 import com.epam.jdi.light.elements.composite.WebPage;
 import ru.training.at.hw7.entities.MetalAndColorsData;
 import ru.training.at.hw7.forms.MetalColorsForm;
+import ru.training.at.hw7.section.RightSideResultSection;
 
 public class JdiMetalAndColorsPage extends WebPage {
 
     public MetalColorsForm metalColorsForm;
+    public static RightSideResultSection rightSideResultSection;
 
     public void fuilMT(MetalAndColorsData metalAndColorsData) {
         metalColorsForm.add(metalAndColorsData);
