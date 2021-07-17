@@ -20,13 +20,6 @@ public class JdiHomePage extends WebPage {
     public void login(User user) {
         userIcon.click();
         loginForm.login(user);
-    }
-
-    public String getTextUserName() {
-        return userName.getText();
-    }
-
-    public Label getUserName() {
-        return userName;
+        userName.is().displayed();
     }
 }

@@ -1,6 +1,5 @@
 package ru.training.at.hw7.entities;
 
-import io.cucumber.java.bs.I;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

@@ -1,46 +1,49 @@
 package ru.training.at.hw7;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import ru.training.at.hw7.config.TextConstants;
 import ru.training.at.hw7.entities.MetalAndColorsData;
 
 public class JdiMetalsAndColorsFormTest extends JdiAbstractTest {
 
     @DataProvider(name = "TestData")
-    public static Object[][] getJson() {
-
-        //String fileName = context.getOutputDirectory();
+    public static Object[][] getJson(ITestContext context) {
 
         Gson gson = new Gson();
 
+        String jsonPath = context.getAttribute("jsonPath").toString();
+
         try {
             JsonObject jsonObject =
-                JsonParser.parseReader(new FileReader("src/main/resources/JDI_ex8_metalsColorsDataSet.json"))
+                JsonParser.parseReader(new FileReader(jsonPath))
                           .getAsJsonObject();
 
-            List<MetalAndColorsData> metalAndColorsData = new ArrayList<>();
+            List<MetalAndColorsData> entitiesList = new ArrayList<>();
             for (String key : jsonObject.keySet()) {
-                MetalAndColorsData andColorsData = gson.fromJson(jsonObject.get(key),
-                    MetalAndColorsData.class);
-                metalAndColorsData.add(andColorsData);
+                MetalAndColorsData entity = gson.fromJson(jsonObject.get(key), MetalAndColorsData.class);
+                entitiesList.add(entity);
             }
 
             List<MetalAndColorsData[]> list = new ArrayList<>();
-            for (MetalAndColorsData x : metalAndColorsData) {
-                MetalAndColorsData[] andColorsData = new MetalAndColorsData[] {x};
-                list.add(andColorsData);
+            for (MetalAndColorsData entity : entitiesList) {
+                MetalAndColorsData[] entityArray = new MetalAndColorsData[] {entity};
+                list.add(entityArray);
             }
             return list.toArray(new MetalAndColorsData[0][]);
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -50,9 +53,7 @@ public class JdiMetalsAndColorsFormTest extends JdiAbstractTest {
     @Test(dataProvider = "TestData")
     public void demoTest(MetalAndColorsData metalAndColorsData) {
 
-        List<String> x = metalAndColorsData.getExpectedData();
-
-        JdiSite.headerSection.headMenu.select("Metals & Colors");
+        JdiSite.headerSection.headMenu.select(TextConstants.METAL_COLORS);
         JdiSite.metalAndColorsPage.metalAndColorsForm.fillForm(metalAndColorsData);
         JdiSite.metalAndColorsPage.metalAndColorsForm.clickSubmitButton();
 
@@ -60,6 +61,5 @@ public class JdiMetalsAndColorsFormTest extends JdiAbstractTest {
         List<String> expected = metalAndColorsData.getExpectedData();
 
         Assert.assertEquals(actual, expected);
-
     }
 }

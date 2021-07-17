@@ -28,7 +28,4 @@ public class JdiSite {
         jdiHomePage.login(user);
     }
 
-    public static String getTextUserName() {
-        return jdiHomePage.getTextUserName();
-    }
 }
