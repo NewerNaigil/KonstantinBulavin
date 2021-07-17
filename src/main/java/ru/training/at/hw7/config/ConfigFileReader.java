@@ -45,8 +45,7 @@ public class ConfigFileReader {
         return properties.getProperty("incorrectPassword");
     }
 
-    public String getJsonPath () {
+    public String getJsonPath() {
         return properties.getProperty("jsonPath");
     }
-
 }

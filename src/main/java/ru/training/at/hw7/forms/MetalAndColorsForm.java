@@ -2,15 +2,12 @@ package ru.training.at.hw7.forms;
 
 import com.epam.jdi.light.elements.common.UIElement;
 import com.epam.jdi.light.elements.complex.Checklist;
-import com.epam.jdi.light.elements.complex.WebList;
 import com.epam.jdi.light.elements.complex.dropdown.Dropdown;
 import com.epam.jdi.light.elements.composite.Form;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.JDropdown;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.UI;
 import com.epam.jdi.light.ui.html.elements.common.Button;
 import com.epam.jdi.light.ui.html.elements.complex.RadioButtons;
-import java.util.ArrayList;
-import java.util.List;
 import ru.training.at.hw7.entities.MetalAndColorsData;
 
 public class MetalAndColorsForm extends Form<MetalAndColorsData> {
@@ -66,11 +63,9 @@ public class MetalAndColorsForm extends Form<MetalAndColorsData> {
         for (String vegetablesText : metalAndColorsData.getVegetables()) {
             vegetables.select(vegetablesText);
         }
-
     }
 
     public void clickSubmitButton() {
         submit.click();
     }
-
 }

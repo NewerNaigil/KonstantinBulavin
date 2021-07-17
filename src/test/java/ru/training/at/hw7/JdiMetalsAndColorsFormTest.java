@@ -1,15 +1,12 @@
 package ru.training.at.hw7;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.DataProvider;
@@ -23,7 +20,6 @@ public class JdiMetalsAndColorsFormTest extends JdiAbstractTest {
     public static Object[][] getJson(ITestContext context) {
 
         Gson gson = new Gson();
-
         String jsonPath = context.getAttribute("jsonPath").toString();
 
         try {
@@ -31,16 +27,10 @@ public class JdiMetalsAndColorsFormTest extends JdiAbstractTest {
                 JsonParser.parseReader(new FileReader(jsonPath))
                           .getAsJsonObject();
 
-            List<MetalAndColorsData> entitiesList = new ArrayList<>();
+            List<MetalAndColorsData[]> list = new ArrayList<>();
             for (String key : jsonObject.keySet()) {
                 MetalAndColorsData entity = gson.fromJson(jsonObject.get(key), MetalAndColorsData.class);
-                entitiesList.add(entity);
-            }
-
-            List<MetalAndColorsData[]> list = new ArrayList<>();
-            for (MetalAndColorsData entity : entitiesList) {
-                MetalAndColorsData[] entityArray = new MetalAndColorsData[] {entity};
-                list.add(entityArray);
+                list.add(new MetalAndColorsData[] {entity});
             }
             return list.toArray(new MetalAndColorsData[0][]);
 

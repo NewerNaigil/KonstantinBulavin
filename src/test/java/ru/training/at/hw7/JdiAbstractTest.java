@@ -4,7 +4,6 @@ import com.epam.jdi.light.driver.WebDriverUtils;
 import com.epam.jdi.light.elements.init.PageFactory;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import ru.training.at.hw7.config.ConfigFileReader;
 import ru.training.at.hw7.entities.User;
@@ -28,5 +27,4 @@ public class JdiAbstractTest {
     public void afterSuite() {
         WebDriverUtils.killAllSeleniumDrivers();
     }
-
 }

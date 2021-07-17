@@ -62,8 +62,8 @@ public class MetalAndColorsData {
         expectedData.add("Color: " + color);
         expectedData.add("Metal: " + metals);
         expectedData.add("Vegetables: " + Arrays.toString(vegetables.toArray())
-                                              .replace("[", "")
-                                              .replace("]", ""));
+                                                .replace("[", "")
+                                                .replace("]", ""));
         return expectedData;
     }
 }
