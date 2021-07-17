@@ -9,6 +9,8 @@ import com.epam.jdi.light.elements.pageobjects.annotations.locators.JDropdown;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.UI;
 import com.epam.jdi.light.ui.html.elements.common.Button;
 import com.epam.jdi.light.ui.html.elements.complex.RadioButtons;
+import java.util.ArrayList;
+import java.util.List;
 import ru.training.at.hw7.entities.MetalAndColorsData;
 
 public class MetalAndColorsForm extends Form<MetalAndColorsData> {
@@ -45,8 +47,8 @@ public class MetalAndColorsForm extends Form<MetalAndColorsData> {
 
     public void fillForm(MetalAndColorsData metalAndColorsData) {
 
-        for (String summaryText : metalAndColorsData.getSummary()) {
-            summary.select(summaryText);
+        for (Integer summaryInt : metalAndColorsData.getSummary()) {
+            summary.select(summaryInt.toString());
         }
 
         for (String elementText : metalAndColorsData.getElements()) {

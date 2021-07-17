@@ -8,6 +8,8 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.testng.Assert;
+import org.testng.ITestContext;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.training.at.hw7.entities.MetalAndColorsData;
@@ -16,6 +18,8 @@ public class JdiMetalsAndColorsFormTest extends JdiAbstractTest {
 
     @DataProvider(name = "TestData")
     public static Object[][] getJson() {
+
+        //String fileName = context.getOutputDirectory();
 
         Gson gson = new Gson();
 
@@ -46,12 +50,16 @@ public class JdiMetalsAndColorsFormTest extends JdiAbstractTest {
     @Test(dataProvider = "TestData")
     public void demoTest(MetalAndColorsData metalAndColorsData) {
 
+        List<String> x = metalAndColorsData.getExpectedData();
 
         JdiSite.headerSection.headMenu.select("Metals & Colors");
-
         JdiSite.metalAndColorsPage.metalAndColorsForm.fillForm(metalAndColorsData);
         JdiSite.metalAndColorsPage.metalAndColorsForm.clickSubmitButton();
 
+        List<String> actual = JdiSite.metalAndColorsPage.rightSideResultSection.getLogsListText();
+        List<String> expected = metalAndColorsData.getExpectedData();
+
+        Assert.assertEquals(actual, expected);
 
     }
 }

@@ -1,20 +1,24 @@
 package ru.training.at.hw7.entities;
 
+import io.cucumber.java.bs.I;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class MetalAndColorsData {
 
-    private List<String> summary;
+    private List<Integer> summary;
     private List<String> elements;
     private String color;
     private String metals;
     private List<String> vegetables;
 
-    public List<String> getSummary() {
+    public List<Integer> getSummary() {
         return summary;
     }
 
-    public void setSummary(List<String> summary) {
+    public void setSummary(List<Integer> summary) {
         this.summary = summary;
     }
 
@@ -48,5 +52,19 @@ public class MetalAndColorsData {
 
     public void setVegetables(List<String> vegetables) {
         this.vegetables = vegetables;
+    }
+
+    public List<String> getExpectedData() {
+        List<String> expectedData = new ArrayList<>();
+        expectedData.add("Summary: " + summary.stream().flatMapToInt(IntStream::of).sum());
+        expectedData.add("Elements: " + Arrays.toString(elements.toArray())
+                                              .replace("[", "")
+                                              .replace("]", ""));
+        expectedData.add("Color: " + color);
+        expectedData.add("Metal: " + metals);
+        expectedData.add("Vegetables: " + Arrays.toString(vegetables.toArray())
+                                              .replace("[", "")
+                                              .replace("]", ""));
+        return expectedData;
     }
 }

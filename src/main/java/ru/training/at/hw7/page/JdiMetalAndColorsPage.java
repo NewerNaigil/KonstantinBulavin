@@ -8,7 +8,7 @@ import ru.training.at.hw7.section.RightSideResultSection;
 public class JdiMetalAndColorsPage extends WebPage {
 
     public MetalAndColorsForm metalAndColorsForm;
-    public static RightSideResultSection rightSideResultSection;
+    public RightSideResultSection rightSideResultSection;
 
     public void fillMT(MetalAndColorsData metalAndColorsData) {
         metalAndColorsForm.add(metalAndColorsData);
