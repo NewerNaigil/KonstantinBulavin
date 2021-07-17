@@ -7,3 +7,5 @@ target
 # Alure
 .allure
 allure-results
+
+*.log

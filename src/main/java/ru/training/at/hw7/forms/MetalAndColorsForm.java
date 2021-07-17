@@ -11,7 +11,7 @@ import com.epam.jdi.light.ui.html.elements.common.Button;
 import com.epam.jdi.light.ui.html.elements.complex.RadioButtons;
 import ru.training.at.hw7.entities.MetalAndColorsData;
 
-public class MetalColorsForm extends Form<MetalAndColorsData> {
+public class MetalAndColorsForm extends Form<MetalAndColorsData> {
 
     @UI("input[type = 'radio']")
     private static RadioButtons summary;
@@ -44,8 +44,10 @@ public class MetalColorsForm extends Form<MetalAndColorsData> {
     private static UIElement result;
 
     public void fillForm(MetalAndColorsData metalAndColorsData) {
-        summary.select(metalAndColorsData.getSummary().get(0));
-        summary.select(metalAndColorsData.getSummary().get(1));
+
+        for (String summaryText : metalAndColorsData.getSummary()) {
+            summary.select(summaryText);
+        }
 
         for (String elementText : metalAndColorsData.getElements()) {
             elements.select(elementText);

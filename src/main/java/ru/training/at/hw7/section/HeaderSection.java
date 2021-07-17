@@ -9,7 +9,4 @@ public class HeaderSection extends Section {
     @UI("//ul[@ class = 'uui-navigation nav navbar-nav m-l8']/li/a")
     public Menu headMenu;
 
-
-    public void met() {
-    }
 }
