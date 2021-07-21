@@ -39,9 +39,6 @@ public class MetalAndColorsForm extends Form<MetalAndColorsData> {
     @UI("button#submit-button")
     private static Button submit;
 
-    @UI("ul[class = 'panel-body-list results'] li")
-    private static UIElement result;
-
     public void fillForm(MetalAndColorsData metalAndColorsData) {
 
         for (Integer summaryInt : metalAndColorsData.getSummary()) {

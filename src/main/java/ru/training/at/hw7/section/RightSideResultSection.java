@@ -8,7 +8,7 @@ import java.util.List;
 
 public class RightSideResultSection extends Section {
 
-    @UI("ul[class='panel-body-list results'] li")
+    @UI("//div[normalize-space(text()) = 'Result']/..//li")
     private List<UIElement> logsList;
 
     public List<String> getLogsListText() {

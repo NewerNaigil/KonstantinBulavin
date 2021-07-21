@@ -14,13 +14,20 @@ public class JdiAbstractTest {
 
     @BeforeSuite(alwaysRun = true)
     public void beforeSuite(ITestContext context) {
-        PageFactory.initSite(JdiSite.class);
-        JdiSite.open();
-        JdiSite.login(User.ROMAN);
 
         configFileReader = new ConfigFileReader();
         configFileReader.loadProperty();
         context.setAttribute("jsonPath", configFileReader.getJsonPath());
+
+        PageFactory.initSite(JdiSite.class);
+        JdiSite.open();
+        JdiSite.login(
+            new User(
+                configFileReader.getLogin(),
+                configFileReader.getPassword(),
+                configFileReader.getFullName()
+            )
+        );
     }
 
     @AfterSuite(alwaysRun = true)
