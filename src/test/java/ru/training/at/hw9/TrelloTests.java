@@ -1,7 +1,9 @@
 package ru.training.at.hw9;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.hasProperty;
 import static ru.training.at.hw9.TrelloBoardObj.badResponseSpecification;
 import static ru.training.at.hw9.TrelloBoardObj.getAnswer;
@@ -11,13 +13,18 @@ import static ru.training.at.hw9.TrelloBoardObj.requestBuilder;
 import static ru.training.at.hw9.constants.EndPoints.ALL_BOARDS;
 import static ru.training.at.hw9.constants.EndPoints.BASE_BOARD;
 import static ru.training.at.hw9.constants.TestData.CREATE_BOARD_NAME;
+import static ru.training.at.hw9.constants.TestData.DEFAULT_BOARD_ID;
+import static ru.training.at.hw9.constants.TestData.DEFAULT_BOARD_NAME;
+import static ru.training.at.hw9.constants.TestData.INCORRECT_BOARD_ID;
+import static ru.training.at.hw9.constants.TestData.INCORRECT_KEY;
+import static ru.training.at.hw9.constants.TestData.INCORRECT_TOKEN;
 import static ru.training.at.hw9.constants.TestData.KEY;
 import static ru.training.at.hw9.constants.TestData.TOKEN;
-import static ru.training.at.hw9.constants.TestData.*;
 
 import io.restassured.http.Method;
 import java.net.URI;
 import java.util.List;
+import org.apache.http.HttpStatus;
 import org.testng.annotations.Test;
 import ru.training.at.hw9.beans.TrelloBoard;
 
@@ -94,7 +101,7 @@ public class TrelloTests {
     }
 
     @Test
-    public void checkCorrectBoardId() {
+    public void checkBoardWithCorrectId() {
         requestBuilder()
             .setMethod(Method.GET)
             .setId(DEFAULT_BOARD_ID)
@@ -106,7 +113,7 @@ public class TrelloTests {
     }
 
     @Test
-    public void checkIncorrectBoardId() {
+    public void checkBoardWithIncorrectId() {
         requestBuilder()
             .setMethod(Method.GET)
             .setId(INCORRECT_BOARD_ID)
@@ -115,5 +122,29 @@ public class TrelloTests {
             .sendRequest(URI.create(BASE_BOARD + INCORRECT_BOARD_ID))
             .then().assertThat()
             .spec(badResponseSpecification());
+    }
+
+    @Test
+    public void checkIncorrectKey() {
+        requestBuilder()
+            .setMethod(Method.GET)
+            .setId(INCORRECT_BOARD_ID)
+            .setCredentials(INCORRECT_KEY, TOKEN)
+            .buildRequest()
+            .sendRequest(URI.create(BASE_BOARD + DEFAULT_BOARD_ID))
+            .then().assertThat()
+            .statusCode(HttpStatus.SC_UNAUTHORIZED);
+    }
+
+    @Test
+    public void checkIncorrectToken() {
+        requestBuilder()
+            .setMethod(Method.GET)
+            .setId(INCORRECT_BOARD_ID)
+            .setCredentials(KEY, INCORRECT_TOKEN)
+            .buildRequest()
+            .sendRequest(URI.create(BASE_BOARD + DEFAULT_BOARD_ID))
+            .then().assertThat()
+            .statusCode(HttpStatus.SC_UNAUTHORIZED);
     }
 }

@@ -22,7 +22,6 @@ import ru.training.at.hw9.beans.TrelloBoard;
 public class TrelloBoardObj {
 
     private Method requestMethod;
-
     private Map<String, String> parameters;
 
     public TrelloBoardObj(Method requestMethod, Map<String, String> parameters) {
