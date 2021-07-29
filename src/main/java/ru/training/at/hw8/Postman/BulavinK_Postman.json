@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "Get All boards",
+			"name": "Create a Board",
 			"event": [
 				{
 					"listen": "test",
@@ -16,44 +16,43 @@
 							"    pm.response.to.have.status(200);\r",
 							"}) \r",
 							"\r",
-							"pm.test(\"Boards exist\", function () {\r",
-							"    var jsonData = JSON.parse(responseBody);\r",
-							"    pm.expect(jsonData.length).to.be.above(0);\r",
-							"})\r",
+							"pm.test(\"Check board's main filds\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"id\");\r",
+							"    pm.response.to.have.jsonBody(\"name\")\r",
+							"});\r",
 							"\r",
 							"pm.test(\"Set idBoard in colection variable\", function () {\r",
 							"    var jsonData = JSON.parse(responseBody);\r",
-							"    pm.collectionVariables.set(\"idBoard\", jsonData[0].id);\r",
+							"    pm.collectionVariables.set(\"idBoard\", jsonData.id);\r",
 							"    console.log(\"idBoard is: \" + pm.collectionVariables.get(\"idBoard\"));\r",
-							"});"
+							"});\r",
+							""
 						],
 						"type": "text/javascript"
 					}
 				}
 			],
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"key\": \"{{key}}\",\r\n    \"token\": \"{{token}}\",\r\n    \"name\": \"Postman Test Board\",\r\n    \"defaultLists\": \"true\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "{{BaseURL}}/1/members/me/boards?key={{key}}&token={{token}}",
+					"raw": "{{BaseURL}}/1/boards/",
 					"host": [
 						"{{BaseURL}}"
 					],
 					"path": [
 						"1",
-						"members",
-						"me",
-						"boards"
-					],
-					"query": [
-						{
-							"key": "key",
-							"value": "{{key}}"
-						},
-						{
-							"key": "token",
-							"value": "{{token}}"
-						}
+						"boards",
+						""
 					]
 				}
 			},
@@ -232,7 +231,102 @@
 			"response": []
 		},
 		{
-			"name": "Check DEL step",
+			"name": "Check DEL a Card",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"}) \r",
+							"\r",
+							"pm.test(\"Response time is less than 2000ms\", function() {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response have correct text\", function() {\r",
+							"    pm.response.to.have.body(\"The requested resource was not found.\")\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}/1/cards/{{idCard}}?key={{key}}&token={{token}}",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{idCard}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delite a Board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Responce not contains errors\", function() {\r",
+							"    pm.response.to.not.have.jsonBody(\"error\")\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"key\": \"{{key}}\",\r\n    \"token\": \"{{token}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/1/boards/{{idBoard}}",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{idBoard}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check DEL a Board",
 			"event": [
 				{
 					"listen": "test",
@@ -264,24 +358,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{BaseURL}}/1/cards/{{idCard}}?key={{key}}&token={{token}}",
+					"raw": "{{BaseURL}}/1/boards/{{idBoard}}",
 					"host": [
 						"{{BaseURL}}"
 					],
 					"path": [
 						"1",
-						"cards",
-						"{{idCard}}"
-					],
-					"query": [
-						{
-							"key": "key",
-							"value": "{{key}}"
-						},
-						{
-							"key": "token",
-							"value": "{{token}}"
-						}
+						"boards",
+						"{{idBoard}}"
 					]
 				}
 			},
