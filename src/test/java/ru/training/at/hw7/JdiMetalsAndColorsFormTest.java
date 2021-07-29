@@ -37,8 +37,8 @@ public class JdiMetalsAndColorsFormTest extends JdiAbstractTest {
     public void demoTest(MetalAndColorsData metalAndColorsData) {
 
         JdiSite.headerSection.metalAndColors.click();
-        JdiSite.metalAndColorsPage.metalAndColorsForm.fillForm(metalAndColorsData);
-        JdiSite.metalAndColorsPage.metalAndColorsForm.clickSubmitButton();
+        JdiSite.metalAndColorsPage.metalAndColorsForm.fill(metalAndColorsData);
+        JdiSite.metalAndColorsPage.metalAndColorsForm.submit();
 
         List<String> actual = JdiSite.metalAndColorsPage.rightSideResultSection.getLogsListText();
         List<String> expected = metalAndColorsData.getExpectedData();

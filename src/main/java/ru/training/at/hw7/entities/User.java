@@ -2,8 +2,6 @@ package ru.training.at.hw7.entities;
 
 public class User {
 
-    public static final User ROMAN = new User("Roman", "Jdi1234", "ROMAN IOVLEV");
-
     private String name;
     private String password;
     private String fullName;

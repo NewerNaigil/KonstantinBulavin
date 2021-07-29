@@ -1,6 +1,5 @@
 package ru.training.at.hw7.forms;
 
-import com.epam.jdi.light.elements.common.UIElement;
 import com.epam.jdi.light.elements.complex.Checklist;
 import com.epam.jdi.light.elements.complex.dropdown.Dropdown;
 import com.epam.jdi.light.elements.composite.Form;
@@ -39,8 +38,8 @@ public class MetalAndColorsForm extends Form<MetalAndColorsData> {
     @UI("button#submit-button")
     private static Button submit;
 
-    public void fillForm(MetalAndColorsData metalAndColorsData) {
-
+    @Override
+    public void fill(MetalAndColorsData metalAndColorsData) {
         for (Integer summaryInt : metalAndColorsData.getSummary()) {
             summary.select(summaryInt.toString());
         }
@@ -62,7 +61,8 @@ public class MetalAndColorsForm extends Form<MetalAndColorsData> {
         }
     }
 
-    public void clickSubmitButton() {
+    @Override
+    public void submit() {
         submit.click();
     }
 }
