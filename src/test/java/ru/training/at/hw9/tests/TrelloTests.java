@@ -29,16 +29,13 @@ import ru.training.at.hw9.steps.BoardSteps;
 
 public class TrelloTests extends AbstractTest {
 
-    private TrelloBoard firstTestBoard;
-    private TrelloBoard secondTestBoard;
+    private TrelloBoard board;
     private List<String> idList = new ArrayList<>();
 
     @BeforeTest
     public void createTestBoards() {
-        firstTestBoard = BoardSteps.createBoardStep();
-        secondTestBoard = BoardSteps.createBoardStep();
-        idList.add(firstTestBoard.getId());
-        idList.add(secondTestBoard.getId());
+        board = BoardSteps.createBoardStep();
+        idList.add(board.getId());
     }
 
     @AfterTest
@@ -46,6 +43,7 @@ public class TrelloTests extends AbstractTest {
         for (String id : idList) {
             BoardSteps.deleteBoardStep(id);
         }
+        idList.clear();
     }
 
     @Test
@@ -57,19 +55,22 @@ public class TrelloTests extends AbstractTest {
 
     @Test
     public void deleteBoard() {
-        BoardSteps.deleteBoardStep(secondTestBoard.getId());
+        BoardSteps.deleteBoardStep(board.getId());
 
         requestBuilder()
             .setMethod(Method.GET)
-            .setId(secondTestBoard.getId())
+            .setId(board.getId())
             .buildRequest()
-            .sendRequest(URI.create(BASE_BOARD + secondTestBoard.getId()))
+            .sendRequest(URI.create(BASE_BOARD + board.getId()))
             .then().assertThat()
             .body(containsString("The requested resource was not found."));
     }
 
     @Test
     public void checkAllBoards() {
+        TrelloBoard createdBoard = BoardSteps.createBoardStep();
+        idList.add(createdBoard.getId());
+
         List<TrelloBoard> boardList = BoardSteps.getBoardsListStep();
         assertThat(boardList.size(), greaterThan(0));
         for (int i = 0; i < boardList.size(); i++) {
@@ -90,7 +91,7 @@ public class TrelloTests extends AbstractTest {
 
     @Test(dataProvider = "nameProvider", dataProviderClass = DataProviderForTrello.class)
     public void checkChangeName(String name) {
-        TrelloBoard changedBoard = BoardSteps.changeBoardNameStep(firstTestBoard.getId(), name);
+        TrelloBoard changedBoard = BoardSteps.changeBoardNameStep(board.getId(), name);
         assertThat(changedBoard.getName(), equalTo(name));
     }
 
@@ -98,9 +99,9 @@ public class TrelloTests extends AbstractTest {
     public void checkBoardWithCorrectId() {
         requestBuilder()
             .setMethod(Method.GET)
-            .setId(firstTestBoard.getId())
+            .setId(board.getId())
             .buildRequest()
-            .sendRequest(URI.create(BASE_BOARD + firstTestBoard.getId()))
+            .sendRequest(URI.create(BASE_BOARD + board.getId()))
             .then().assertThat()
             .spec(goodResponseSpecification());
     }
