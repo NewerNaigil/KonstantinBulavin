@@ -23,8 +23,8 @@ import org.apache.http.HttpStatus;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import ru.training.at.hw9.DataProviders.DataProviderForTrello;
 import ru.training.at.hw9.beans.TrelloBoard;
+import ru.training.at.hw9.dataproviders.DataProviderForTrello;
 import ru.training.at.hw9.steps.BoardSteps;
 
 public class TrelloTests extends AbstractTest {
@@ -103,7 +103,6 @@ public class TrelloTests extends AbstractTest {
             .sendRequest(URI.create(BASE_BOARD + firstTestBoard.getId()))
             .then().assertThat()
             .spec(goodResponseSpecification());
-
     }
 
     @Test

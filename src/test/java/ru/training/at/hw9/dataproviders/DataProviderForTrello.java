@@ -1,4 +1,4 @@
-package ru.training.at.hw9.DataProviders;
+package ru.training.at.hw9.dataproviders;
 
 import static ru.training.at.hw9.constants.TestData.CHANGE_BOARD_NAME;
 import static ru.training.at.hw9.constants.TestData.DEFAULT_BOARD_NAME;
