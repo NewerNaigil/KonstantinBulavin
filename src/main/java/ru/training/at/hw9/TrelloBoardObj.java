@@ -16,6 +16,7 @@ import java.net.URI;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import org.apache.http.HttpStatus;
 import ru.training.at.hw9.beans.TrelloBoard;
 
@@ -35,8 +36,14 @@ public class TrelloBoardObj {
 
     // Start Builder
     public static class ApiRequestBuilder {
-        private Map<String, String> parameters = new HashMap<>();
+        private ConfigFileReader configFileReader = new ConfigFileReader();
         private Method requestMethod = Method.GET;
+        private Map<String, String> parameters = new HashMap<>();
+
+        {
+            parameters.put("key", configFileReader.getKey());
+            parameters.put("token", configFileReader.getToken());
+        }
 
         public ApiRequestBuilder setMethod(Method method) {
             requestMethod = method;
@@ -66,55 +73,18 @@ public class TrelloBoardObj {
     //End Builder
 
     public Response sendRequest(URI uri) {
-        switch (requestMethod) {
-            case GET:
-                return RestAssured
-                    .given(getRequestSpecification().log().all())
-                    .queryParams(parameters)
-                    .request(requestMethod, uri)
-                    .prettyPeek();
-            case POST:
-                return RestAssured
-                    .given(postRequestSpecification().log().all())
-                    .body(parameters)
-                    .request(requestMethod, uri)
-                    .prettyPeek();
-            case PUT:
-                return RestAssured
-                    .given(putRequestSpecification().log().all())
-                    .queryParams(parameters)
-                    .request(requestMethod, uri)
-                    .prettyPeek();
-            case DELETE:
-                return RestAssured
-                    .given(deleteRequestSpecification().log().all())
-                    .queryParams(parameters)
-                    .request(requestMethod, uri)
-                    .prettyPeek();
-            default:
-                return null;
-        }
+        return RestAssured
+            .given(requestSpecification().log().all())
+            .queryParams(parameters)
+            .body(parameters)
+            .request(requestMethod, uri)
+            .prettyPeek();
     }
 
-    public RequestSpecification getRequestSpecification() {
-        return new RequestSpecBuilder()
-            .build();
-    }
-
-    public RequestSpecification postRequestSpecification() {
+    public RequestSpecification requestSpecification() {
         return new RequestSpecBuilder()
             .setContentType(ContentType.JSON)
             .setAccept(ContentType.JSON)
-            .build();
-    }
-
-    public RequestSpecification putRequestSpecification() {
-        return new RequestSpecBuilder()
-            .build();
-    }
-
-    public RequestSpecification deleteRequestSpecification() {
-        return new RequestSpecBuilder()
             .build();
     }
 
@@ -134,17 +104,15 @@ public class TrelloBoardObj {
             .build();
     }
 
-    public static TrelloBoard getAnswer(Response response) {
-        TrelloBoard answer = new Gson()
+    public static TrelloBoard getBoard(Response response) {
+        return new Gson()
             .fromJson(response.asString().trim(), new TypeToken<TrelloBoard>() {
             }.getType());
-        return answer;
     }
 
-    public static List<TrelloBoard> getListOfAnswers(Response response) {
-        List<TrelloBoard> answers = new Gson()
+    public static List<TrelloBoard> getListOfBoards(Response response) {
+        return new Gson()
             .fromJson(response.asString().trim(), new TypeToken<List<TrelloBoard>>() {
             }.getType());
-        return answers;
     }
 }
